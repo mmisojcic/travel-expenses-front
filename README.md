@@ -4,4 +4,5 @@
 
 2. Provera da li je uspesno dodat repositorijum: git remote -v
     treba da vrati origin https://github.com/mmisojcic/travel-expenses-front.git (fetch)
-                          https://github.com/mmisojcic/travel-expenses-front.git(pull)
+                          https://github.com/mmisojcic/travel-expenses-front.git (pull)
+3. 
