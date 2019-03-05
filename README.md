@@ -29,4 +29,4 @@
 5.  Posle svega ovoga ako je bilo uspesno, povuci sve sa remote reposotory sa: git pull origin remote
 
 6.  node_modules je stavljen na .gitignore da ga ne bi svaki put uploadovali jer dosta zauzima.
-    Zato ga necete imati. Iz foldra project pokrenite: npm i
+    Zato ga necete imati. Iz foldera project pokrenite: npm i
