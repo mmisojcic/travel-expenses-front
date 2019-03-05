@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'Titillium Web', sans-serif !important;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.full-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-form {
+  width: 30%;
+  padding: 20px;
+}
