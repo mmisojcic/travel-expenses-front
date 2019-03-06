@@ -1,3 +1,28 @@
+<nav class="navbar navbar-dark bg-primary shadow">
+  <a class="navbar-brand" href="#">
+    <img src="/assets/images/eng.png" width="30" height="30" class="d-inline-block align-top rounded shadow-sm" alt="">
+    Business trips
+  </a>
+
+  <div class="btn-group">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false" (click)="onDropdownMenu()">
+      User
+    </button>
+    <div class="dropdown-menu dropdown-menu-hide" [ngClass]="{'dropdown-menu-hide': !dropdownMenu, 'dropdown-menu-show':dropdownMenu}">
+      <a class="dropdown-item" href="#">Add new destination</a>
+      <a class="dropdown-item" href="#">Edit trip?</a>
+      <a class="dropdown-item" href="#">Nesto?</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Logout</a>
+    </div>
+  </div>
+</nav>
+
 <div class="container-fluid full-height">
   <router-outlet></router-outlet>
 </div>
+
+<footer class="footer bg-dark">
+  <span class="">&copy; Engineering Software Lab d.o.o.</span>
+</footer>

@@ -1,0 +1,35 @@
+.dropdown-menu {
+  transform: translateX(-70%);
+  transition: .3s;
+}
+
+.dropdown-menu-show {
+  display: block;
+  transition: .3s;
+}
+
+.dropdown-menu-hide {
+  display: none;
+  transition: .3s;
+}
+
+.navbar {
+  height: 6vh;
+}
+
+.container-fluid {
+  height: 89vh;
+}
+
+.footer {
+  height: 5vh;
+  padding: 15px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-container {
+  height: 100vh;
+}
