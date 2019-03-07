@@ -9,7 +9,9 @@ export class AppComponent {
   title = 'project';
 
   dropdownMenu = false;
-
+  user = true;
+  admin = true;
+  
   onDropdownMenu() {
     this.dropdownMenu
       ? (this.dropdownMenu = false)

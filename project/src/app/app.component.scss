@@ -14,15 +14,27 @@
 }
 
 .navbar {
-  height: 6vh;
+  height: 60x;
 }
 
-.container-fluid {
-  height: 89vh;
+.nav-pills{
+  padding:15px 0;
+}
+
+.nav-link{
+  transition: .3s;
+
+  &:hover{
+    background-color: #343a40;
+    color:#fff;
+  }
+}
+.container-main {
+  height:calc(100vh - 106px);
 }
 
 .footer {
-  height: 5vh;
+  height: 50px;
   padding: 15px;
   color: #fff;
   display: flex;
@@ -30,6 +42,7 @@
   align-items: center;
 }
 
-.full-container {
-  height: 100vh;
+.row {
+  height: 100%;
 }
+
