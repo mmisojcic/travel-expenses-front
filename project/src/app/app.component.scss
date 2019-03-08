@@ -1,5 +1,5 @@
 .dropdown-menu {
-  transform: translateX(-70%);
+  transform: translateX(-53%);
   transition: .3s;
 }
 
@@ -17,20 +17,21 @@
   height: 60x;
 }
 
-.nav-pills{
-  padding:15px 0;
+.nav-pills {
+  padding: 15px 0;
 }
 
-.nav-link{
+.nav-link {
   transition: .3s;
 
-  &:hover{
+  &:hover {
     background-color: #343a40;
-    color:#fff;
+    color: #fff;
   }
 }
+
 .container-main {
-  height:calc(100vh - 106px);
+  height: calc(100vh - 107px);
 }
 
 .footer {
@@ -45,4 +46,3 @@
 .row {
   height: 100%;
 }
-

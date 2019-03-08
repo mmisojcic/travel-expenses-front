@@ -11,11 +11,18 @@ export class AppComponent {
   dropdownMenu = false;
   user = true;
   admin = true;
-  
+
   onDropdownMenu() {
     this.dropdownMenu
       ? (this.dropdownMenu = false)
       : (this.dropdownMenu = true);
+    console.log(this.dropdownMenu);
+  }
+
+  closeDropdownMenu() {
+    if (this.dropdownMenu) {
+      this.dropdownMenu = false;
+    }
     console.log(this.dropdownMenu);
   }
 }

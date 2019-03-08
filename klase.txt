@@ -1,0 +1,110 @@
+Bill
+ number billId
+ number total
+
+//ova tri su zapravo mapirane veze izmedju tabela, nisam sigurna da li tebi trebaju?
+ Busineestrip busineestrip;
+ Employee employee;        
+ List<BillItem> billtems;
+------------------------------
+
+BillItem
+ number idBi
+ number cost
+ string name
+
+Bill bill;
+
+------------------------------
+
+BusinessTrip
+
+ number idBt
+ number employeeIde //za ovo nisam 100% sigurna da nam treba kao polje provericemo sutra
+ date endDate
+ number idp //id iz tabele price koji cu gledati da obrisem posto nam je nepotreban
+ number invoiceIdi
+ date startDate
+ List<Bill> bills
+ Destination destination
+ Tripstatus tripStatus
+ List<Tripofemployee> tripOfEmployees
+
+------------------------------------
+
+Destination
+
+ number idd
+ string city
+ number price
+ number zipcode
+ List<Busineestrip> busineestrips
+ Price priceBean
+
+----------------------------------
+
+Employee
+
+ number ide
+ string email
+ string firstName
+ string lastName
+ number userIdu----mora li ovako? mora user da bude posebna tabela iako smo rekli da je svaki zaposleni user?
+ number userRoleIdr
+ List<Bill> bills----zar ovo nije povezano vec u BusinessTrip?
+ List<Tripofemployee> tripofemployees
+
+-------------------------------------
+
+EmployeeStatus
+
+ number idEs
+ string name
+ //ovde valjda fali employeeid
+
+-------------------------------------
+
+Price
+
+ number idp
+ number amount
+ date enddate
+ date startdate
+ List<Destination> destinations
+
+------------------------------------
+
+Role
+
+ number idr
+ string name
+
+-----------------------------------
+ TripOfEmployee----tek ovo ne kontam :D
+
+ number idToe
+ Busineestrip businessTrip
+ Employee employee
+
+----------------------------------
+
+Tripstatus
+
+ number idts
+ string name
+ List<Busineestrip> busineestrips----????
+
+----------------------------------
+
+User$ //ovo treba nekako da promenimo da nema $
+//ovo cu morati sutra da ispravim pobrljavio je skroz
+//nemoj sve odmah da ubacujes,
+ali ove klase ce sigurno postojati samo treba busineestrip da sredim sa onim poljem viska,
+to cu sutra sad ako krenem mislim da cu slomiti nesto :)
+
+
+Ustvari trebaju nam DTO klase na BE. Objekti koji ce biti prosledjeni onom RestControleru i poslate kao JSON u response.
+Tu treba injectovati klase. Ovako uzimam neke stvari iako ih vec imam.
+
+
+ 
