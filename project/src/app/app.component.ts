@@ -1,3 +1,4 @@
+import { Employee } from './_models/employee.model';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project';
+
+  
 
   dropdownMenu = false;
   user = true;

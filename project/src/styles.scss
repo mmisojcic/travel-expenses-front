@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body::-webkit-scrollbar-thumb {
+  width: 2px;
+}
 
 body {
   font-family: 'Titillium Web', sans-serif !important;

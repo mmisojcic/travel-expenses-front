@@ -1,8 +1,9 @@
 export class BusinessTrip {
   constructor(
     public id: number,
-    public startDate: Date,
-    public endDate: Date,
+    public destination: string,
+    public startDate: string,
+    public endDate: string,
     public status: string
   ) {}
 }

@@ -1,0 +1,40 @@
+<div class="container-fluid full-center employee">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron shadow border">
+        <h1 class="display-4">Hello, {{employee.username}}!</h1>
+        <h4 >Account information.</h4>
+        <hr class="my-4">
+        <p class="lead">First name: {{employee.firstName}}</p>
+        <p class="lead">Last name: {{employee.lastName}}</p>
+        <p class="lead">Email: {{employee.email}}</p>
+        <hr class="my-4">
+        <h4 >Business trips history</h4>
+
+        <div class="shadow-sm rounded table-scroll">
+          <table class="table table-responsive-md table-hover table-bordered rounded">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Start date</th>
+                <th scope="col">End date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr *ngFor="let businessTrip of businessTrips">
+                <th scope="row">{{businessTrip.id}}</th>
+                <td>{{businessTrip.destination}}</td>
+                <td>{{businessTrip.startDate}}</td>
+                <td>{{businessTrip.endDate}}</td>
+                <td>{{businessTrip.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
