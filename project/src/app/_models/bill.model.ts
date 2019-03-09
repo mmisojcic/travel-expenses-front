@@ -1,3 +1,4 @@
+import { BillItem } from './bill-item.model';
 export class Bill {
-  constructor(public billId: number, public total: number) {}
+  constructor(public total: number, public bills: BillItem[]) {}
 }

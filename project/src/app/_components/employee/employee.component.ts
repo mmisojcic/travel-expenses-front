@@ -1,6 +1,10 @@
+import { DataConverter } from './../../_converters/data.converter';
+import { EmployeeDTO } from './../../_dto/employee.dto';
 import { BusinessTrip } from './../../_models/business-trip.model';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/_models/employee.model';
+
+import * as employee from '../../../app/_tests/employee.json';
 
 @Component({
   selector: 'app-employee',
@@ -8,22 +12,20 @@ import { Employee } from 'src/app/_models/employee.model';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
+  json = employee.default;
+  employee: Employee;
 
-  employee: Employee = new Employee(1, 'Marko', 'Markovic', 'mail@gmail.com', 'mmarko', 'pass1234', 'user');
-  businessTrip: BusinessTrip = new BusinessTrip(1, 'Belgrade', '14-mar-2019', '17-mar-2019', 'Active');
+  businessTrip: BusinessTrip;
   businessTrips: BusinessTrip[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    console.log(this.businessTrip)
-    for(let i = 0; i < 100; i++){
-      this.businessTrips.push(this.businessTrip);
-    }
+    this.employee = DataConverter.jsonToEmployee(this.json);
+
+    console.log(JSON.stringify(DataConverter.employeeToJson(this.employee)));
+    console.log(this.employee);
   }
 
-
-  dateFormater(date:Date){
-
-  }
+  dateFormater(date: Date) {}
 }

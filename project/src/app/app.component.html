@@ -33,7 +33,7 @@
           aria-controls="v-pills-settings" aria-selected="false">Settings</a>
       </div>
     </div>
-    <div class="col-sm-10" [ngClass]="{'col-md-12': !user, 'col-md-10':user}">
+    <div class="col-sm-10" [ngClass]="{'col-md-12': user, 'col-md-10':!user}">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -9,11 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'project';
 
-  
-
   dropdownMenu = false;
   user = true;
-  admin = true;
+  admin = false;
 
   onDropdownMenu() {
     this.dropdownMenu

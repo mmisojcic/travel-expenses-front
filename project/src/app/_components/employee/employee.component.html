@@ -1,19 +1,19 @@
 <div class="container-fluid full-center employee">
   <div class="row">
     <div class="col-md-12">
-      <div class="jumbotron shadow border">
+      <div class="jumbotron shadow border bg-light">
         <h1 class="display-4">Hello, {{employee.username}}!</h1>
-        <h4 >Account information.</h4>
+        <h4>Account information.</h4>
         <hr class="my-4">
         <p class="lead">First name: {{employee.firstName}}</p>
         <p class="lead">Last name: {{employee.lastName}}</p>
         <p class="lead">Email: {{employee.email}}</p>
         <hr class="my-4">
-        <h4 >Business trips history</h4>
-
-        <div class="shadow-sm rounded table-scroll">
-          <table class="table table-responsive-md table-hover table-bordered rounded">
-            <thead class="thead-dark">
+        <h4>Business trips history</h4>
+        <hr class="my-4">
+        <div class="table-container">
+          <table class="table  table-bordered">
+            <thead class="thead-dark rounded">
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Destination</th>
@@ -22,10 +22,10 @@
                 <th scope="col">Status</th>
               </tr>
             </thead>
-            <tbody class="table-body">
-              <tr *ngFor="let businessTrip of businessTrips">
+            <tbody class="table-body shadow-sm">
+              <tr *ngFor="let businessTrip of employee.businessTrips">
                 <th scope="row">{{businessTrip.id}}</th>
-                <td>{{businessTrip.destination}}</td>
+                <td>{{businessTrip.destination.city}}</td>
                 <td>{{businessTrip.startDate}}</td>
                 <td>{{businessTrip.endDate}}</td>
                 <td>{{businessTrip.status}}</td>
@@ -33,7 +33,7 @@
             </tbody>
           </table>
         </div>
-        
+
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+import { BusinessTrip } from './business-trip.model';
 export class Employee {
   constructor(
     public id: number,
@@ -5,7 +6,7 @@ export class Employee {
     public lastName: string,
     public email: string,
     public username: string,
-    public password: string,
-    public role: string
+    public role: string,
+    public businessTrips: BusinessTrip[]
   ) {}
 }
