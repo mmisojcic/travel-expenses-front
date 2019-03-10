@@ -20,7 +20,7 @@ export class UserService {
 
   // basic user setup : admin menu, username display, session, navigate to user url
   setUpUser() {
-    if (this.employee.role !== undefined) {
+    if (this.employee.username !== undefined) {
       const userSetupData = new UserSetupData(
         true,
         this.employee.role === 'admin' ? true : false,
@@ -37,7 +37,7 @@ export class UserService {
         this.session.name,
         JSON.stringify(this.session.data)
       );
-      // send userSetupData to sbscribing components
+      // send userSetupData to subscribing components
       this.transferSetupData.next(userSetupData);
       // navigate user to his configured url
       this.router.navigateByUrl('/user/' + this.employee.id);
