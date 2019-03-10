@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   onLogout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem(this.userService.session.name);
     this.userService.employee = null;
     this.adminMenu = false;
     this.userMenu = false;
