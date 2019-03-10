@@ -26,3 +26,17 @@ body {
 .align-text-center {
   text-align: center;
 }
+
+.ng-touched.ng-valid {
+  transition: .3s;
+  border: 1px solid #28a745;
+}
+
+.ng-touched.ng-invalid {
+  transition: .3s;
+  border: 1px solid #dc3545;
+}
+
+form {
+  border: 1px solid transparent !important;
+}

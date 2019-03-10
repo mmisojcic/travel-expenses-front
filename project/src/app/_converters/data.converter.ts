@@ -1,8 +1,18 @@
+import { UserCredentialsDTO } from './../_dto/user-credentials.dto';
 import { EmployeeDTO } from './../_dto/employee.dto';
 import { Employee } from '../_models/employee.model';
+import { User } from '../_models/user.model';
 
 export class DataConverter {
-  // converts json to Employee and returns Employee object
+  // converts user login data to JSON
+  static userCredentialsToJson(model: User): UserCredentialsDTO {
+    return {
+      username: model.username,
+      password: model.password
+    };
+  }
+
+  // converts JSON to Employee and returns Employee object
   static jsonToEmployee(json: EmployeeDTO): Employee {
     return new Employee(
       json.id,
@@ -15,7 +25,7 @@ export class DataConverter {
     );
   }
 
-  // convert Employee object to json data and returns it
+  // convert Employee object to JSON data and returns it
   static employeeToJson(model: Employee): EmployeeDTO {
     return {
       id: model.id,

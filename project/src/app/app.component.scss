@@ -1,15 +1,19 @@
 .dropdown-menu {
   transform: translateX(-53%);
   transition: .3s;
+  display: block;
+  overflow: hidden;
+  max-height: 3000px;
+  height: 0;
 }
 
 .dropdown-menu-show {
-  display: block;
+  height: 160px;
   transition: .3s;
 }
 
 .dropdown-menu-hide {
-  display: none;
+  height: 0;
   transition: .3s;
 }
 

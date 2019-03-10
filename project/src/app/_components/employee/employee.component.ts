@@ -1,10 +1,8 @@
-import { DataConverter } from './../../_converters/data.converter';
-import { EmployeeDTO } from './../../_dto/employee.dto';
-import { BusinessTrip } from './../../_models/business-trip.model';
+import { UserService } from './../../_services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/_models/employee.model';
 
-import * as employee from '../../../app/_tests/employee.json';
+import { HttpService } from 'src/app/_services/http.service';
 
 @Component({
   selector: 'app-employee',
@@ -12,19 +10,12 @@ import * as employee from '../../../app/_tests/employee.json';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
-  json = employee.default;
-  employee: Employee;
+  employee: Employee = new Employee();
 
-  businessTrip: BusinessTrip;
-  businessTrips: BusinessTrip[] = [];
-
-  constructor() {}
+  constructor(private userService: UserService, private http: HttpService) {}
 
   ngOnInit() {
-    this.employee = DataConverter.jsonToEmployee(this.json);
-
-    console.log(JSON.stringify(DataConverter.employeeToJson(this.employee)));
-    console.log(this.employee);
+    this.employee = this.userService.employee;
   }
 
   dateFormater(date: Date) {}
