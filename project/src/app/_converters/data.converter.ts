@@ -2,6 +2,8 @@ import { UserCredentialsDTO } from './../_dto/user-credentials.dto';
 import { EmployeeDTO } from './../_dto/employee.dto';
 import { Employee } from '../_models/employee.model';
 import { User } from '../_models/user.model';
+import { RegisterUserDataDTO } from '../_dto/register-data.dto';
+import { RegisterUserData } from '../_models/register-data.model';
 
 export class DataConverter {
   // converts user login data to JSON
@@ -9,6 +11,16 @@ export class DataConverter {
     return {
       username: model.username,
       password: model.password
+    };
+  }
+
+  // converts user register data to JSON
+  static registerUserDataToJson(model: RegisterUserData): RegisterUserDataDTO {
+    return {
+      username: model.username,
+      password: model.password,
+      firstName: model.firstName,
+      lastName: model.lastName
     };
   }
 

@@ -11,6 +11,7 @@ import * as employee from '../_tests/employee.json';
 import { Observable } from 'rxjs';
 import { Route, Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { RegisterUserDataDTO } from '../_dto/register-data.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,16 @@ export class HttpService {
     return this.http.post(url, json).pipe(
       finalize(() => {
         this.userService.setUpUser();
-        console.log('sve gotovo');
+        console.log('login done');
+      })
+    );
+  }
+
+  register(url: string, json: RegisterUserDataDTO) {
+    return this.http.post(url, json).pipe(
+      finalize(() => {
+        this.userService.setUpUser();
+        console.log('register done');
       })
     );
   }

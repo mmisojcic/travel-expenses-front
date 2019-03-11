@@ -31,7 +31,8 @@ export class AppComponent implements OnInit {
 
   onLogout() {
     sessionStorage.removeItem(this.userService.session.name);
-    this.userService.employee = null;
+    this.userService.employee = undefined;
+    this.userService.userCredentials = undefined;
     this.adminMenu = false;
     this.userMenu = false;
     this.router.navigateByUrl('/login');

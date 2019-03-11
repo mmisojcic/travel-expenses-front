@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     );
     this.http
       .login(
-        endPoint.login,
+        endPoint.baseUrl + endPoint.login,
         DataConverter.userCredentialsToJson(this.userService.userCredentials)
       )
       .subscribe(
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.userService.employee = DataConverter.jsonToEmployee(res);
         },
         err => {
-          console.log('http error' + err);
+          console.log('http error on login');
           this.userService.employee = DataConverter.jsonToEmployee(
             this.http.json
           );
