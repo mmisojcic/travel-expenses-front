@@ -39,7 +39,7 @@
   </button>
   <h1 class="display-4">Business trip information.</h1>
   <hr class="my-4">
-  <div class="row">
+  <div class="row ">
     <div class="col-sm-6 border-right">
       <p class="lead">Destination:</p>
       <div class="pl-3 flex ">
@@ -57,7 +57,7 @@
   <hr class="my-4">
   <h4>Bills history</h4>
   <hr class="my-4">
-  <div class="card-row">
+  <div class="card-row border-left border-right">
     <div class=" bill-card " *ngFor="let bill of businesTrip.bills;let i=index">
       <div class="card-header rounded shadow border">
         <b>#{{i+1}}&nbsp;Bill total:&nbsp;{{bill.total}}$</b>
