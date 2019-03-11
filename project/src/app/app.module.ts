@@ -9,15 +9,13 @@ import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { EmployeeComponent } from './_components/employee/employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BusinessTripComponent } from './_components/business-trip/business-trip.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    EmployeeComponent,
-    BusinessTripComponent
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

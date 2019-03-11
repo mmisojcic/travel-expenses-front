@@ -1,4 +1,4 @@
-<div class="jumbotron shadow border bg-light full-center employee">
+<div class="jumbotron shadow border bg-light full-center employee" [@employeeAnimation]="businessTripTrigger">
   <h1 class="display-4">Hello, {{employee.username}}!</h1>
   <h4>Account information.</h4>
   <hr class="my-4">
@@ -9,7 +9,7 @@
   <h4>Business trips history</h4>
   <hr class="my-4">
   <div class="table-container">
-    <table class="table  table-bordered">
+    <table class="table table-business-trips   table-bordered">
       <thead class="thead-dark rounded">
         <tr>
           <th scope="col">#</th>
@@ -29,5 +29,45 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<!-- businessTrip -->
+<div class="jumbotron full-center shadow shadow-very-very-big border bg-light business-trip" [@businessTripAnimation]="businessTripTrigger">
+  <button type="button" class="close" aria-label="Close" (click)="onCloseBusinessTrip()">
+    <span aria-hidden="true">&#8600;</span>
+  </button>
+  <h1 class="display-4">Belgrade</h1>
+  <h4>Business trip information.</h4>
+  <hr class="my-4">
+  <p class="lead">Start date: {{businesTrip.startDate}}</p>
+  <p class="lead">End date: {{businesTrip.endDate}}</p>
+  <p class="lead">Status: {{businesTrip.status}}</p>
+  <p class="lead">Total spent: {{businesTrip.billsTotal}}</p>
+  <hr class="my-4">
+  <h4>Bills history</h4>
+  <hr class="my-4">
+  <div class="card-row">
+    <div class=" bill-card " *ngFor="let bill of businesTrip.bills;let i=index">
+      <div class="card-header rounded shadow border">
+        <b>#{{i+1}}&nbsp;Bill total:&nbsp;{{bill.total}}$</b>
+      </div>
+      <table class="table-bills table table-sm table-bordered shadow">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Type</th>
+            <th scope="col">Cost</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <tr *ngFor="let billItem of bill.billItems;let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{billItem.name}}</td>
+            <td>{{billItem.cost}}$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

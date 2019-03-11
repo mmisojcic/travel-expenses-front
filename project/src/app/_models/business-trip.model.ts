@@ -4,11 +4,12 @@ import { Employee } from './employee.model';
 
 export class BusinessTrip {
   constructor(
-    public id: number,
-    public destination: Destination,
-    public startDate: string,
-    public endDate: string,
-    public bills: Bill[],
-    public status: string
+    public id?: number,
+    public destination?: Destination,
+    public startDate?: string,
+    public endDate?: string,
+    public billsTotal?: number,
+    public bills?: Bill[],
+    public status?: string
   ) {}
 }

@@ -33,7 +33,7 @@
           aria-controls="v-pills-settings" aria-selected="false">Settings</a>
       </div>
     </div>
-    <div class="col-sm-10" [ngClass]="{'col-md-12': !adminMenu, 'col-md-10':adminMenu}" [@routingAnimation]="o.isActivated ? o.activatedRoute : ''">
+    <div class="col-sm-10" [ngClass]="{'col-sm-12': !adminMenu, 'col-sm-10':adminMenu}" [@routingAnimation]="o.isActivated ? o.activatedRoute : ''">
       <router-outlet #o="outlet"></router-outlet>
     </div>
   </div>
