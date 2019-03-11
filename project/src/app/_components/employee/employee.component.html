@@ -37,13 +37,23 @@
   <button type="button" class="close" aria-label="Close" (click)="onCloseBusinessTrip()">
     <span aria-hidden="true">&#8600;</span>
   </button>
-  <h1 class="display-4">Belgrade</h1>
-  <h4>Business trip information.</h4>
+  <h1 class="display-4">Business trip information.</h1>
   <hr class="my-4">
-  <p class="lead">Start date: {{businesTrip.startDate}}</p>
-  <p class="lead">End date: {{businesTrip.endDate}}</p>
-  <p class="lead">Status: {{businesTrip.status}}</p>
-  <p class="lead">Total spent: {{businesTrip.billsTotal}}</p>
+  <div class="row">
+    <div class="col-sm-6 border-right">
+      <p class="lead">Destination:</p>
+      <div class="pl-3 flex ">
+        <p class="lead">City: {{businesTrip.destination.city}}</p>
+        <p class="lead ml-2">Wage: {{businesTrip.destination.wage.amount}}</p>
+      </div>
+      <p class="lead">Start date: {{businesTrip.startDate}}</p>
+      <p class="lead">End date: {{businesTrip.endDate}}</p>
+    </div>
+    <div class="col-sm-6">
+      <p class="lead">Status: {{businesTrip.status}}</p>
+      <p class="lead">Total spent: {{businesTrip.billsTotal}}$</p>
+    </div>
+  </div>
   <hr class="my-4">
   <h4>Bills history</h4>
   <hr class="my-4">
@@ -56,7 +66,7 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Type</th>
+            <th scope="col">Item</th>
             <th scope="col">Cost</th>
           </tr>
         </thead>

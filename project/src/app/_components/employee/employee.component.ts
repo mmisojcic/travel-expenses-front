@@ -32,6 +32,7 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.employee = this.userService.employee;
+    this.businesTrip = this.employee.businessTrips[0];
   }
 
   onBusinessTrip(ind: number) {

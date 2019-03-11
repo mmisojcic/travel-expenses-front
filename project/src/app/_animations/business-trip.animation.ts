@@ -22,8 +22,8 @@ export const businessTripAnimation = trigger('businessTripAnimation', [
       opacity: 0
     })
   ),
-  transition('open => closed', [animate('.6s ease-in')]),
-  transition('closed => open', [animate('.3s ease-out')])
+  transition('open => closed', [animate('0.4s ease-in')]),
+  transition('closed => open', [animate('0.4s ease-out')])
 ]);
 
 export const employeeAnimation = trigger('employeeAnimation', [
@@ -39,6 +39,6 @@ export const employeeAnimation = trigger('employeeAnimation', [
       opacity: 1
     })
   ),
-  transition('open => closed', [animate('.4s')]),
-  transition('closed => open', [animate('.6s')])
+  transition('open => closed', [animate('0.4s ease-in')]),
+  transition('closed => open', [animate('0.4s ease-out')])
 ]);
