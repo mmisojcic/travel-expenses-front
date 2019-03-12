@@ -1,0 +1,76 @@
+<div class="jumbotron shadow border bg-light full-center destinations" [@destinationsAnimation]="animationTrigger">
+  <h1 class="display-4">Destinations</h1>
+  <h4>Destination details</h4>
+  <hr class="my-4">
+  <table class="table table-sm table-destinations table-bordered">
+      <thead class="thead-dark rounded">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">City</th>
+          <th scope="col">ZipCode</th>
+          <th scope="col">Wege</th>
+        </tr>
+      </thead>
+      <tbody class="table-body shadow-sm">
+        <tr (click)="onBusinessTrip()">
+          <th scope="row">1</th>
+          <td>Belgrade</td>
+          <td>11000</td>
+          <td>50</td>
+         </tr>
+         <tr class="flex">
+            <th scope="row">1</th>
+            <td>Belgrade</td>
+            <td>11000</td>
+            <td class="flex">
+              <input type="text" class="form-control shadow-sm" placeholder="50" *ngIf="false">
+              <span  *ngIf="true">50</span>
+              <button type="button" class="btn-sm stick-right shadow-sm btn btn-primary">Edit</button>
+            </td>
+           </tr>
+           <tr (click)="onBusinessTrip()">
+              <th scope="row">1</th>
+              <td>Belgrade</td>
+              <td>11000</td>
+              <td>50</td>
+             </tr>
+             <tr (click)="onBusinessTrip()">
+                <th scope="row">1</th>
+                <td>Belgrade</td>
+                <td>11000</td>
+                <td>50</td>
+               </tr>
+               <tr (click)="onBusinessTrip()">
+                  <th scope="row">1</th>
+                  <td>Belgrade</td>
+                  <td>11000</td>
+                  <td>50</td>
+                 </tr>
+                 <tr (click)="onBusinessTrip()">
+                    <th scope="row">1</th>
+                    <td>Belgrade</td>
+                    <td>11000</td>
+                    <td>50</td>
+                   </tr>
+                   <tr (click)="onBusinessTrip()">
+                      <th scope="row">1</th>
+                      <td>Belgrade</td>
+                      <td>11000</td>
+                      <td>50</td>
+                     </tr>
+                     
+      </tbody>
+    </table>
+    
+    <table class="table table-sm table-new-destination table-bordered" >
+        <tbody class="table-body">
+            <tr [@newDestinationAnimation]="animationTrigger">
+                <th scope="row"><button type="button" class="btn btn-primary"(click)="onNewDestinations()" >&#10010;</button></th>
+                <td><input type="text" class="form-control shadow-sm" placeholder="Enter City" ></td>
+                <td><input type="text" class="form-control shadow-sm" placeholder="Enter Zipcode" ></td>
+                <td><input type="text" class="form-control shadow-sm" placeholder="Enter Zipcode" ></td>
+               </tr>
+        </tbody>
+      </table>
+  </div>
+  

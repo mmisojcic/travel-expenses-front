@@ -10,6 +10,7 @@ import { RegisterComponent } from './_components/register/register.component';
 import { EmployeeComponent } from './_components/employee/employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllEmployeesComponent } from './_components/all-employees/all-employees.component';
+import { DestinationsComponent } from './_components/destinations/destinations.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AllEmployeesComponent } from './_components/all-employees/all-employees
     LoginComponent,
     RegisterComponent,
     EmployeeComponent,
-    AllEmployeesComponent
+    AllEmployeesComponent,
+    DestinationsComponent
   ],
   imports: [
     BrowserModule,
