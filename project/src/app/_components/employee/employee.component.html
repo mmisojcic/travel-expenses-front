@@ -2,9 +2,34 @@
   <h1 class="display-4">Hello, {{employee.username}}!</h1>
   <h4>Account information.</h4>
   <hr class="my-4">
-  <p class="lead">First name: {{employee.firstName}}</p>
-  <p class="lead">Last name: {{employee.lastName}}</p>
-  <p class="lead">Email: {{employee.email}}</p>
+  <div class="row">
+    <div class="col-sm-6 border-right">
+      <p class="lead">First name: {{employee.firstName}}</p>
+      <p class="lead">Last name: {{employee.lastName}}</p>
+      <p class="lead">Email: {{employee.email}}</p>
+    </div>  
+  <div class="col-sm-6 ">
+    <form class="form-inline">
+      <label class="lead my-1 mr-2" for="inlineFormCustomSelectPref">Status:</label>
+      <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
+        <!-- <option selected>Choose...</option> -->
+        <option value="1">Active</option>
+        <option value="2">Former</option>
+      </select>
+      <button type="submit" class="btn btn-primary my-1">Change</button>
+    </form>
+    <form class="form-inline">
+      <label class=" lead my-1 mr-2" for="inlineFormCustomSelectPref">Authorisation Level:</label>
+      <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
+        <!-- <option selected>Choose...</option> -->
+        <option value="1">User</option>
+        <option value="2">Admin</option>
+      </select>
+      <button type="submit" class="btn btn-primary my-1">Change</button>
+    </form>
+  </div>
+  </div>
+ 
   <hr class="my-4">
   <h4>Business trips history</h4>
   <hr class="my-4">
@@ -50,8 +75,17 @@
       <p class="lead">End date: {{businesTrip.endDate}}</p>
     </div>
     <div class="col-sm-6">
-      <p class="lead">Status: {{businesTrip.status}}</p>
-      <p class="lead">Total spent: {{businesTrip.billsTotal}}$</p>
+        <p class="lead">Total spent: {{businesTrip.billsTotal}}$</p>
+        <p class="lead" *ngIf="false">Status: {{businesTrip.status}}</p>
+        <form class="form-inline" *ngIf="true">
+            <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
+            <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
+              <!-- <option selected>Choose...</option> -->
+              <option value="1">Active</option>
+              <option value="2">Former</option>
+            </select>
+            <button type="submit" class="btn btn-primary my-1">Change</button>
+          </form>
     </div>
   </div>
   <hr class="my-4">

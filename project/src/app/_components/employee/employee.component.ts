@@ -19,6 +19,7 @@ import { Bill } from 'src/app/_models/bill.model';
   animations: [businessTripAnimation, employeeAnimation]
 })
 export class EmployeeComponent implements OnInit {
+  
   employee: Employee = new Employee();
   businesTrip: BusinessTrip = new BusinessTrip();
 
