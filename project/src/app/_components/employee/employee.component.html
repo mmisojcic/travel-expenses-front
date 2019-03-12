@@ -3,12 +3,12 @@
   <h4>Account information.</h4>
   <hr class="my-4">
   <div class="row">
-    <div class="col-sm-6 border-right">
+    <div class="col-sm-6">
       <p class="lead">First name: {{employee.firstName}}</p>
       <p class="lead">Last name: {{employee.lastName}}</p>
       <p class="lead">Email: {{employee.email}}</p>
     </div>  
-  <div class="col-sm-6 ">
+  <div class="col-sm-6 border-left" *ngIf="false">
     <form class="form-inline">
       <label class="lead my-1 mr-2" for="inlineFormCustomSelectPref">Status:</label>
       <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
