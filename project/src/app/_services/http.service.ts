@@ -1,3 +1,4 @@
+import { MsgDTO } from './../_dto/msg.dto';
 import { endPoint } from './../_config/end-points.config';
 import { UserService } from './user.service';
 import { map, catchError, finalize } from 'rxjs/operators';
@@ -41,5 +42,9 @@ export class HttpService {
         console.log('register done');
       })
     );
+  }
+
+  test(url: string, json: UserCredentialsDTO) {
+    return this.http.post(url, json);
   }
 }

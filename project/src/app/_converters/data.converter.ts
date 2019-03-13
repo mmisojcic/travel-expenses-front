@@ -1,9 +1,11 @@
+import { MsgDTO } from './../_dto/msg.dto';
 import { UserCredentialsDTO } from './../_dto/user-credentials.dto';
 import { EmployeeDTO } from './../_dto/employee.dto';
 import { Employee } from '../_models/employee.model';
 import { User } from '../_models/user.model';
 import { RegisterUserDataDTO } from '../_dto/register-data.dto';
 import { RegisterUserData } from '../_models/register-data.model';
+import { Msg } from '../_components/login/login.component';
 
 export class DataConverter {
   // converts user login data to JSON
@@ -49,4 +51,14 @@ export class DataConverter {
       businessTrips: model.businessTrips
     };
   }
+
+  // static jsontotest(json: any): Msg {
+  //   return new Msg(json.msg);
+  // }
+  // static testtojson(model: User): UserCredentialsDTO {
+  //   return {
+  //     username: model.username,
+  //     password: model.password
+  //   };
+  // }
 }

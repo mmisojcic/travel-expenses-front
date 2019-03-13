@@ -1,3 +1,4 @@
+import { MsgDTO } from './../../_dto/msg.dto';
 import { DataConverter } from './../../_converters/data.converter';
 import { HttpService } from 'src/app/_services/http.service';
 import { UserService } from './../../_services/user.service';
@@ -37,6 +38,16 @@ export class LoginComponent implements OnInit {
       this.loginForm.get('username').value,
       this.loginForm.get('password').value
     );
+    // this.http
+    //   .test(
+    //     endPoint.baseUrl + endPoint.login,
+    //     DataConverter.userCredentialsToJson(this.userService.userCredentials)
+    //   )
+    //   .subscribe(res => {
+    //     const msg = DataConverter.jsontotest(res);
+    //     alert(msg.msg);
+    //   });
+
     this.http
       .login(
         endPoint.baseUrl + endPoint.login,
@@ -47,7 +58,7 @@ export class LoginComponent implements OnInit {
           this.userService.employee = DataConverter.jsonToEmployee(res);
         },
         err => {
-          console.log('http error on login');
+          console.log('http error on login' + err);
           this.userService.employee = DataConverter.jsonToEmployee(
             this.http.json
           );
@@ -55,4 +66,7 @@ export class LoginComponent implements OnInit {
         }
       );
   }
+}
+export class Msg {
+  constructor(public msg: string) {}
 }
