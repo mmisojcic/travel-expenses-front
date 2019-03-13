@@ -1,4 +1,4 @@
-<div class="jumbotron shadow border bg-light full-center destinations">
+<div class="jumbotron shadow border bg-light full-center destinations" [@destinationDimAnimation]="animationTrigger">
   <h1 class="display-4">Destinations</h1>
   <h4>Destination details</h4>
   <hr class="my-4">
@@ -34,7 +34,7 @@
   </table>
 </div>
 
-<div class="jumbotron border bg-light full-center destinations shadow-very-very-big" [@destinationAnimation]="destinationTrigger">
+<div class="jumbotron border bg-light full-center destinations shadow-very-very-big" [@destinationAnimation]="animationTrigger">
   <button type="button" class="close" aria-label="Close" (click)="onCloseDestination()">
     <span aria-hidden="true">&#8600;</span>
   </button>

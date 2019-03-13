@@ -31,7 +31,7 @@ export class EmployeeComponent implements OnInit {
     new TripStatus(4, 'canceled')
   ];
   // single status
-  status = '';
+  status = 'canceled';
 
   // animation trigger
   businessTripTrigger = 'closed';
@@ -62,7 +62,7 @@ export class EmployeeComponent implements OnInit {
   statusColor(status?: string, select?: HTMLOptionElement) {
     // in case of option select
     if (select) {
-      select.style.color = this.colorPick(this.status);
+      select.style.color = this.colorPick(status);
     } else {
       // any other case
       return this.colorPick(status);
@@ -74,7 +74,7 @@ export class EmployeeComponent implements OnInit {
     if (status === 'ongoing') {
       color = '#17a2b8';
     } else if (status === 'upcoming') {
-      color = '#007bff';
+      color = '#ffc107';
     } else if (status === 'finished') {
       color = '#28a745';
     } else if (status === 'canceled') {
@@ -83,7 +83,7 @@ export class EmployeeComponent implements OnInit {
     return color;
   }
 
-  setSelectStatus(status: string) {
+  selectStatus(status: string) {
     this.status = status;
     console.log(this.status);
   }

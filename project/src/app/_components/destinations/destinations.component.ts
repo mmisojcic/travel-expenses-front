@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {
   newDestinationAnimation,
-  destinationAnimation
+  destinationAnimation,
+  destinationDimAnimation
 } from 'src/app/_animations/destination.animation';
 
 @Component({
   selector: 'app-destinations',
   templateUrl: './destinations.component.html',
   styleUrls: ['./destinations.component.scss'],
-  animations: [newDestinationAnimation, destinationAnimation]
+  animations: [newDestinationAnimation, destinationAnimation,destinationDimAnimation]
 })
 export class DestinationsComponent implements OnInit {
   newDestinationTrigger = 'closed';
-  destinationTrigger = 'closed';
+  animationTrigger = 'closed';
 
   edit = false;
   addButtonCaption = 'Add new';
@@ -25,11 +26,11 @@ export class DestinationsComponent implements OnInit {
   ngOnInit() {}
 
   onDestination(index: number) {
-    this.destinationTrigger = 'open';
+    this.animationTrigger = 'open';
     console.log(index);
   }
   onCloseDestination() {
-    this.destinationTrigger = 'closed';
+    this.animationTrigger = 'closed';
   }
 
   onNewDestinations(input: HTMLInputElement) {
