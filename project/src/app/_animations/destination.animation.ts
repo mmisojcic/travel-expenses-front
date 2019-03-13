@@ -11,33 +11,34 @@ export const newDestinationAnimation = trigger('newDestinationAnimation', [
   state(
     'open',
     style({
-      width:'75%',
+      width: '100%',
       opacity: 1
-      
     })
   ),
   state(
     'closed',
     style({
-      width:'0',
+      width: '0',
       opacity: 0
     })
   ),
-  transition('open => closed', [animate('0.4s ease-in')]),
-  transition('closed => open', [animate('0.4s ease-out')])
+  transition('open => closed', [animate('0.4s')]),
+  transition('closed => open', [animate('0.4s')])
 ]);
 
-export const destinationsAnimation = trigger('destinationsAnimation', [
+export const destinationAnimation = trigger('destinationAnimation', [
   state(
     'open',
     style({
-      opacity: 0.3
+      transform: 'scale(1) translate(-50%,-50%)',
+      opacity: 1
     })
   ),
   state(
     'closed',
     style({
-      opacity: 1
+      transform: 'scale(0) translate(-50%,-50%)',
+      opacity: 0
     })
   ),
   transition('open => closed', [animate('0.4s ease-in')]),

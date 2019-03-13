@@ -1,22 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { newDestinationAnimation, destinationsAnimation } from 'src/app/_animations/destination.animation';
-
+import {
+  newDestinationAnimation,
+  destinationAnimation
+} from 'src/app/_animations/destination.animation';
 
 @Component({
   selector: 'app-destinations',
   templateUrl: './destinations.component.html',
   styleUrls: ['./destinations.component.scss'],
-  animations:[newDestinationAnimation, destinationsAnimation]
+  animations: [newDestinationAnimation, destinationAnimation]
 })
 export class DestinationsComponent implements OnInit {
-animationTrigger='closed';
+  newDestinationTrigger = 'closed';
+  destinationTrigger = 'closed';
 
-  constructor() { }
+  edit = false;
+  addButtonCaption = 'Add new';
+  editButtonCaption = 'Edit';
 
-  ngOnInit() {
+  // testArr
+  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  constructor() {}
+
+  ngOnInit() {}
+
+  onDestination(index: number) {
+    this.destinationTrigger = 'open';
+    console.log(index);
   }
-onNewDestinations(){
-  this.animationTrigger === 'closed' ? this.animationTrigger = 'open' : this.animationTrigger = 'closed' ;
+  onCloseDestination() {
+    this.destinationTrigger = 'closed';
+  }
 
-}
+  onNewDestinations(input: HTMLInputElement) {
+    this.newDestinationTrigger === 'closed'
+      ? (this.newDestinationTrigger = 'open')
+      : (this.newDestinationTrigger = 'closed');
+    this.addButtonCaption === 'Add new'
+      ? (this.addButtonCaption = 'Save')
+      : (this.addButtonCaption = 'Add new');
+    input.focus();
+  }
 }

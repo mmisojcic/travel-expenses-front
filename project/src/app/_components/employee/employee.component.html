@@ -7,29 +7,27 @@
       <p class="lead">First name: {{employee.firstName}}</p>
       <p class="lead">Last name: {{employee.lastName}}</p>
       <p class="lead">Email: {{employee.email}}</p>
-    </div>  
-  <div class="col-sm-6 border-left" *ngIf="false">
-    <form class="form-inline">
-      <label class="lead my-1 mr-2" for="inlineFormCustomSelectPref">Status:</label>
-      <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
-        <!-- <option selected>Choose...</option> -->
-        <option value="1">Active</option>
-        <option value="2">Former</option>
-      </select>
-      <button type="submit" class="btn btn-primary my-1">Change</button>
-    </form>
-    <form class="form-inline">
-      <label class=" lead my-1 mr-2" for="inlineFormCustomSelectPref">Authorisation Level:</label>
-      <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
-        <!-- <option selected>Choose...</option> -->
-        <option value="1">User</option>
-        <option value="2">Admin</option>
-      </select>
-      <button type="submit" class="btn btn-primary my-1">Change</button>
-    </form>
+    </div>
+    <div class="col-sm-6 border-left" *ngIf="false">
+      <form class="form-inline">
+        <label class="lead my-1 mr-2" for="inlineFormCustomSelectPref">Status:</label>
+        <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
+          <option value="1">Active</option>
+          <option value="2">Former</option>
+        </select>
+        <button type="submit" class="btn btn-primary my-1">Change</button>
+      </form>
+      <form class="form-inline">
+        <label class=" lead my-1 mr-2" for="inlineFormCustomSelectPref">Authorisation Level:</label>
+        <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
+          <option value="1">User</option>
+          <option value="2">Admin</option>
+        </select>
+        <button type="submit" class="btn btn-primary my-1">Change</button>
+      </form>
+    </div>
   </div>
-  </div>
- 
+
   <hr class="my-4">
   <h4>Business trips history</h4>
   <hr class="my-4">
@@ -45,12 +43,12 @@
         </tr>
       </thead>
       <tbody class="table-body shadow-sm">
-        <tr *ngFor="let businessTrip of employee.businessTrips" (click)="onBusinessTrip(businessTrip.id)">
+        <tr *ngFor="let businessTrip of employee.businessTrips" (click)="onBusinessTrip(businessTrip)">
           <th scope="row">{{businessTrip.id}}</th>
           <td>{{businessTrip.destination.city}}</td>
           <td>{{businessTrip.startDate}}</td>
           <td>{{businessTrip.endDate}}</td>
-          <td>{{businessTrip.status}}</td>
+          <td><span [ngStyle]="{'color': statusColor(businessTrip.status)}">{{businessTrip.status}}</span></td>
         </tr>
       </tbody>
     </table>
@@ -75,17 +73,18 @@
       <p class="lead">End date: {{businesTrip.endDate}}</p>
     </div>
     <div class="col-sm-6">
-        <p class="lead">Total spent: {{businesTrip.billsTotal}}$</p>
-        <p class="lead" *ngIf="false">Status: {{businesTrip.status}}</p>
-        <form class="form-inline" *ngIf="true">
-            <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
-            <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
-              <!-- <option selected>Choose...</option> -->
-              <option value="1">Active</option>
-              <option value="2">Former</option>
-            </select>
-            <button type="submit" class="btn btn-primary my-1">Change</button>
-          </form>
+      <p class="lead">Total spent: {{businesTrip.billsTotal}}$</p>
+      <p class="lead" *ngIf="true">Status: <span [ngStyle]="{'color': color}">{{businesTrip.status}}</span></p>
+      <form class="form-inline" *ngIf="false">
+        <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
+        <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
+          <option value="1">Ongoing</option>
+          <option value="2">Upcoming</option>
+          <option value="3">Finished</option>
+          <option value="4" selected="selected">Canceled</option>
+        </select>
+        <button type="submit" class="btn btn-primary my-1">Change</button>
+      </form>
     </div>
   </div>
   <hr class="my-4">

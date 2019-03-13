@@ -1,41 +1,63 @@
+.jumbotron {
+  overflow: hidden;
+}
+
+.destinations {
+  max-height: calc(100vh - 180px);
+  width: 80%;
+}
+
 .table-destinations {
- margin-bottom: 0;
-    thead {
-      th {
-        cursor: default;
-      }
-    }
-  
-    tr {
-      transition: .3s;
-  
-      &:nth-child(even) {
-        background-color: rgba(#343a40, 0.15);
-      }
-    }
-  
-    tbody {
-      display: block;
-      height: 220px;
-      overflow: auto;
-    }
-  
-    thead,
-    tbody tr {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-      /* even columns width , fix width of table too*/
+  position: relative;
+  margin-bottom: 0;
+  z-index: 112;
+
+  thead {
+    th {
+      cursor: default;
     }
   }
-  
+
+  tr {
+    cursor: pointer;
+    transition: .3s;
+
+    &:nth-child(even) {
+      background-color: rgba(#343a40, 0.15);
+    }
+
+    &:hover {
+      background-color: rgba(#343a40, 0.5);
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+
+  tbody {
+    display: block;
+    height: 400px;
+    overflow: auto;
+  }
+
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    /* even columns width , fix width of table too*/
+  }
+}
+
 .table-body {
+
   //   overflow-y: scroll;
-  td{
-    p{
+  td {
+
+    p {
       margin-bottom: 0;
     }
   }
+
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px rgba(#343a40, 0.5);
     border-radius: 2px;
@@ -55,12 +77,18 @@
 
 }
 
-.stick-right{
+.stick-right {
   margin-left: auto;
 }
 
-.table-new-destination{
-  height: fit-content;
+.table-new-destination {
+  margin-bottom: 0;
+  overflow: hidden;
+  border-top: none;
+
+  td {
+    align-self: center;
+  }
 
   tbody tr {
     display: table;
@@ -69,7 +97,21 @@
   }
 }
 
+.add {
+  position: absolute;
+  z-index: 4444;
+  top: calc(100% + .4rem);
+  left: .2rem;
+  transition: all .4s;
+  align-self: center;
+}
 
-.form-control{
-  width:100%;
+.edit-input {
+  width: 60%;
+  height: 1.9rem;
+  align-self: center;
+}
+
+.form-control {
+  // width: 100%;
 }

@@ -19,11 +19,12 @@ import { Bill } from 'src/app/_models/bill.model';
   animations: [businessTripAnimation, employeeAnimation]
 })
 export class EmployeeComponent implements OnInit {
-  
   employee: Employee = new Employee();
   businesTrip: BusinessTrip = new BusinessTrip();
 
   businessTripTrigger = 'closed';
+
+  color = 'red';
 
   constructor(
     private userService: UserService,
@@ -36,14 +37,28 @@ export class EmployeeComponent implements OnInit {
     this.businesTrip = this.employee.businessTrips[0];
   }
 
-  onBusinessTrip(ind: number) {
-    this.businesTrip = this.employee.businessTrips[ind - 1];
+  onBusinessTrip(businessTrip: BusinessTrip) {
+    this.businesTrip = businessTrip;
     console.log(this.businesTrip);
     this.businessTripTrigger = 'open';
+    this.color = this.statusColor(businessTrip.status);
   }
   onCloseBusinessTrip() {
     this.businessTripTrigger = 'closed';
   }
 
+  statusColor(status: string) {
+    let color;
+    if (status === 'Ongoing') {
+      color = '#17a2b8';
+    } else if (status === 'Upcoming') {
+      color = '#007bff';
+    } else if (status === 'Finished') {
+      color = '#28a745';
+    } else if (status === 'Canceled') {
+      color = '#dc3545';
+    }
+    return color;
+  }
   dateFormater(date: Date) {}
 }

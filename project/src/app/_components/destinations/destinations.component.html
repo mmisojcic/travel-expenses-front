@@ -1,76 +1,77 @@
-<div class="jumbotron shadow border bg-light full-center destinations" [@destinationsAnimation]="animationTrigger">
+<div class="jumbotron shadow border bg-light full-center destinations">
   <h1 class="display-4">Destinations</h1>
   <h4>Destination details</h4>
   <hr class="my-4">
   <table class="table table-sm table-destinations table-bordered">
-      <thead class="thead-dark rounded">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">City</th>
-          <th scope="col">ZipCode</th>
-          <th scope="col">Wege</th>
-        </tr>
-      </thead>
-      <tbody class="table-body shadow-sm">
-        <tr (click)="onBusinessTrip()">
-          <th scope="row">1</th>
-          <td>Belgrade</td>
-          <td>11000</td>
-          <td>50</td>
-         </tr>
-         <tr class="flex">
-            <th scope="row">1</th>
-            <td>Belgrade</td>
-            <td>11000</td>
-            <td class="flex">
-              <input type="text" class="form-control shadow-sm" placeholder="50" *ngIf="false">
-              <span  *ngIf="true">50</span>
-              <button type="button" class="btn-sm stick-right shadow-sm btn btn-primary">Edit</button>
-            </td>
-           </tr>
-           <tr (click)="onBusinessTrip()">
-              <th scope="row">1</th>
-              <td>Belgrade</td>
-              <td>11000</td>
-              <td>50</td>
-             </tr>
-             <tr (click)="onBusinessTrip()">
-                <th scope="row">1</th>
-                <td>Belgrade</td>
-                <td>11000</td>
-                <td>50</td>
-               </tr>
-               <tr (click)="onBusinessTrip()">
-                  <th scope="row">1</th>
-                  <td>Belgrade</td>
-                  <td>11000</td>
-                  <td>50</td>
-                 </tr>
-                 <tr (click)="onBusinessTrip()">
-                    <th scope="row">1</th>
-                    <td>Belgrade</td>
-                    <td>11000</td>
-                    <td>50</td>
-                   </tr>
-                   <tr (click)="onBusinessTrip()">
-                      <th scope="row">1</th>
-                      <td>Belgrade</td>
-                      <td>11000</td>
-                      <td>50</td>
-                     </tr>
-                     
-      </tbody>
-    </table>
-    
-    <table class="table table-sm table-new-destination table-bordered" >
-        <tbody class="table-body">
-            <tr [@newDestinationAnimation]="animationTrigger">
-                <th scope="row"><button type="button" class="btn btn-primary"(click)="onNewDestinations()" >&#10010;</button></th>
-                <td><input type="text" class="form-control shadow-sm" placeholder="Enter City" ></td>
-                <td><input type="text" class="form-control shadow-sm" placeholder="Enter Zipcode" ></td>
-                <td><input type="text" class="form-control shadow-sm" placeholder="Enter Zipcode" ></td>
-               </tr>
+    <thead class="thead-dark rounded">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">City</th>
+        <th scope="col">ZipCode</th>
+        <th scope="col">Wege</th>
+      </tr>
+    </thead>
+    <tbody class="table-body shadow-sm">
+      <tr *ngFor="let i of arr" (click)="onDestination(i)">
+        <th scope="row">{{i}}</th>
+        <td>Belgrade</td>
+        <td>11000</td>
+        <td>50</td>
+      </tr>
+    </tbody>
+    <button type="button" class="btn btn-primary add" (click)="onNewDestinations(city)">{{addButtonCaption}}</button>
+  </table>
+
+  <table class="table table-sm table-new-destination" [@newDestinationAnimation]="newDestinationTrigger">
+    <tbody class="table-body">
+      <tr>
+        <th scope="row"></th>
+        <td><input #city type="text" class="form-control shadow-sm" placeholder="City"></td>
+        <td><input type="text" class="form-control shadow-sm" placeholder="ZipCode"></td>
+        <td><input type="text" class="form-control shadow-sm" placeholder="Wage"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="jumbotron border bg-light full-center destinations shadow-very-very-big" [@destinationAnimation]="destinationTrigger">
+  <button type="button" class="close" aria-label="Close" (click)="onCloseDestination()">
+    <span aria-hidden="true">&#8600;</span>
+  </button>
+  <h1 class="display-4">Destination #1</h1>
+  <h4>Destination details</h4>
+  <hr class="my-4">
+  <div class="row ">
+    <div class="col-sm-5 border-right">
+      <p class="lead">City: Belgrade</p>
+      <p class="lead">ZipCode:11000</p>
+      <p class="lead">Wage: 55</p>
+      <form class="form-inline" *ngIf="true">
+        <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">New wage:</label>
+        <input type="text" class="form-control shadow-sm" placeholder="Wage">
+        <button type="submit" class="btn btn-primary ml-2">Change</button>
+      </form>
+    </div>
+    <div class="col-sm-7">
+      <p class="lead">Wage change history</p>
+      <table class="table table-sm table-destinations table-bordered">
+        <thead class="thead-dark rounded">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody class="table-body shadow-sm">
+          <tr *ngFor="let i of arr" (click)="onDestination(i)">
+            <th scope="row">{{i}}</th>
+            <td>12.5.1989.</td>
+            <td>23.7.1235.</td>
+            <td>50</td>
+          </tr>
         </tbody>
       </table>
+    </div>
   </div>
-  
+</div>
