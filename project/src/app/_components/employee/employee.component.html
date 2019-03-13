@@ -48,7 +48,7 @@
           <td>{{businessTrip.destination.city}}</td>
           <td>{{businessTrip.startDate}}</td>
           <td>{{businessTrip.endDate}}</td>
-          <td><span [ngStyle]="{'color': statusColor(businessTrip.status)}">{{businessTrip.status}}</span></td>
+          <td><span class="uppercase" [ngStyle]="{'color': statusColor(businessTrip.status)}">{{businessTrip.status}}</span></td>
         </tr>
       </tbody>
     </table>
@@ -74,14 +74,15 @@
     </div>
     <div class="col-sm-6">
       <p class="lead">Total spent: {{businesTrip.billsTotal}}$</p>
-      <p class="lead" *ngIf="true">Status: <span [ngStyle]="{'color': color}">{{businesTrip.status}}</span></p>
-      <form class="form-inline" *ngIf="false">
+      <p class="lead" *ngIf="true">Status: <span class="uppercase" [ngStyle]="{'color': color}">{{businesTrip.status}}</span></p>
+      <form class="form-inline" *ngIf="true">
         <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
-        <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref">
-          <option value="1">Ongoing</option>
-          <option value="2">Upcoming</option>
-          <option value="3">Finished</option>
-          <option value="4" selected="selected">Canceled</option>
+        <select #select (change)="statusColor(select)" [ngStyle]="{'color': statusColor(businesTrip.status)}" class="uppercase custom-select my-1 mr-sm-2 shadow-sm"
+          id="inlineFormCustomSelectPref">
+          <option #option class="uppercase" [value]="ind" *ngFor="let status of tripStatuses;let ind = index"
+            [selected]="businesTrip.status === status.name" [ngStyle]="{'color': statusColor(status.name)}">
+            {{status.name}}
+          </option>
         </select>
         <button type="submit" class="btn btn-primary my-1">Change</button>
       </form>

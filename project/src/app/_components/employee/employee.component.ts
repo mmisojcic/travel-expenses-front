@@ -1,3 +1,4 @@
+import { TripStatus } from './../../_models/tripStatus.model';
 import { BillItem } from './../../_models/bill-item.model';
 import { BusinessTrip } from './../../_models/business-trip.model';
 import {
@@ -22,6 +23,17 @@ export class EmployeeComponent implements OnInit {
   employee: Employee = new Employee();
   businesTrip: BusinessTrip = new BusinessTrip();
 
+  // mock status array. later to be filled with real data
+  tripStatuses = [
+    new TripStatus(1, 'ongoing'),
+    new TripStatus(2, 'upcoming'),
+    new TripStatus(3, 'finished'),
+    new TripStatus(4, 'canceled')
+  ];
+  // single status
+  status = '';
+
+  // animation trigger
   businessTripTrigger = 'closed';
 
   color = 'red';
@@ -47,18 +59,34 @@ export class EmployeeComponent implements OnInit {
     this.businessTripTrigger = 'closed';
   }
 
-  statusColor(status: string) {
+  statusColor(status?: string, select?: HTMLOptionElement) {
+    // in case of option select
+    if (select) {
+      select.style.color = this.colorPick(this.status);
+    } else {
+      // any other case
+      return this.colorPick(status);
+    }
+  }
+
+  colorPick(status) {
     let color;
-    if (status === 'Ongoing') {
+    if (status === 'ongoing') {
       color = '#17a2b8';
-    } else if (status === 'Upcoming') {
+    } else if (status === 'upcoming') {
       color = '#007bff';
-    } else if (status === 'Finished') {
+    } else if (status === 'finished') {
       color = '#28a745';
-    } else if (status === 'Canceled') {
+    } else if (status === 'canceled') {
       color = '#dc3545';
     }
     return color;
   }
+
+  setSelectStatus(status: string) {
+    this.status = status;
+    console.log(this.status);
+  }
+
   dateFormater(date: Date) {}
 }

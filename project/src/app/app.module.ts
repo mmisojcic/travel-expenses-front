@@ -11,6 +11,7 @@ import { EmployeeComponent } from './_components/employee/employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllEmployeesComponent } from './_components/all-employees/all-employees.component';
 import { DestinationsComponent } from './_components/destinations/destinations.component';
+import { PageNotFoundComponent } from './_components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DestinationsComponent } from './_components/destinations/destinations.c
     RegisterComponent,
     EmployeeComponent,
     AllEmployeesComponent,
-    DestinationsComponent
+    DestinationsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
