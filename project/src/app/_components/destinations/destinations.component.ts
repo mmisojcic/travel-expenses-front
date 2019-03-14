@@ -1,3 +1,5 @@
+import { Destination } from './../../_models/destination.model';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {
   newDestinationAnimation,
@@ -12,6 +14,7 @@ import {
   animations: [newDestinationAnimation, destinationAnimation,destinationDimAnimation]
 })
 export class DestinationsComponent implements OnInit {
+  destinationForm:FormGroup;
   newDestinationTrigger = 'closed';
   animationTrigger = 'closed';
 
@@ -23,7 +26,22 @@ export class DestinationsComponent implements OnInit {
   arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.destinationForm = new FormGroup({
+      city: new FormControl(null, [
+        // Validators.required
+        // Validators.pattern('^[A-Z][a-z][0-9]{2,30}$')
+      ]),
+      zipCode: new FormControl(null, [
+        // Validators.required
+        // Validators.pattern('^[A-Z][0-9]{6, 20}$')
+      ]),
+      wage: new FormControl(null, [
+        // Validators.required
+        // Validators.pattern('^[A-Z][0-9]{6, 20}$')
+      ])
+    });
+  }
 
   onDestination(index: number) {
     this.animationTrigger = 'open';
@@ -38,8 +56,12 @@ export class DestinationsComponent implements OnInit {
       ? (this.newDestinationTrigger = 'open')
       : (this.newDestinationTrigger = 'closed');
     this.addButtonCaption === 'Add new'
-      ? (this.addButtonCaption = 'Save')
+      ? (this.addButtonCaption = 'Cancel')
       : (this.addButtonCaption = 'Add new');
     input.focus();
+  }
+
+  onSave(){
+    
   }
 }

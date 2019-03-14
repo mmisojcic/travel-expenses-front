@@ -1,3 +1,5 @@
+import { TripStatusDTO } from './../_dto/trip-status.dto';
+import { TripStatus } from './../_models/tripStatus.model';
 import { UserCredentialsDTO } from './../_dto/user-credentials.dto';
 import { EmployeeDTO } from './../_dto/employee.dto';
 import { Employee } from '../_models/employee.model';
@@ -47,6 +49,14 @@ export class DataConverter {
       username: model.username,
       role: model.role,
       businessTrips: model.businessTrips
+    };
+  }
+  
+  // convert TripStatus object to JSON
+  static statusToJson(model:TripStatus):TripStatusDTO{
+    return {
+      id: model.id,
+      name: model.name
     };
   }
 }

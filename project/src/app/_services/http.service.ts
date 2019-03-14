@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { Route, Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { RegisterUserDataDTO } from '../_dto/register-data.dto';
+import { DestinationDTO } from '../_dto/destination.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class HttpService {
     return this.http.post(url, json).pipe(
       finalize(() => {
         this.userService.setUpUser();
+        
         console.log('login done');
       })
     );
@@ -41,5 +43,21 @@ export class HttpService {
         console.log('register done');
       })
     );
+  }
+
+  getDestination(url:string, json: DestinationDTO){
+    return this.http.post(url,json).pipe(
+      finalize(() => {
+        console.log('desination get');
+      })
+    )
+  }
+
+  saveDestination(url:string, json: DestinationDTO){
+    return this.http.post(url,json).pipe(
+      finalize(() => {
+        console.log('desination get');
+      })
+    )
   }
 }

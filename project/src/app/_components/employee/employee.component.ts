@@ -1,3 +1,4 @@
+import { FormGroup, FormControl } from '@angular/forms';
 import { TripStatus } from './../../_models/tripStatus.model';
 import { BillItem } from './../../_models/bill-item.model';
 import { BusinessTrip } from './../../_models/business-trip.model';
@@ -20,6 +21,8 @@ import { Bill } from 'src/app/_models/bill.model';
   animations: [businessTripAnimation, employeeAnimation]
 })
 export class EmployeeComponent implements OnInit {
+  statusForm:FormGroup;
+
   employee: Employee = new Employee();
   businesTrip: BusinessTrip = new BusinessTrip();
 
@@ -47,11 +50,21 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.employee = this.userService.employee;
     this.businesTrip = this.employee.businessTrips[0];
+    // statusForm init
+    this.statusForm = new FormGroup({
+      status: new FormControl()
+    });
+  }
+
+  changeStatus(){
+    const i = this.statusForm.get('status').value - 1;
+    const status = new TripStatus( i, this.tripStatuses[i].name);
+    
+      console.log(status);
   }
 
   onBusinessTrip(businessTrip: BusinessTrip) {
     this.businesTrip = businessTrip;
-    console.log(this.businesTrip);
     this.businessTripTrigger = 'open';
     this.color = this.statusColor(businessTrip.status);
   }

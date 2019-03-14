@@ -22,16 +22,20 @@
     <button type="button" class="btn btn-primary add" (click)="onNewDestinations(city)">{{addButtonCaption}}</button>
   </table>
 
+<form [formGroup]="destinationForm" (ngSubmit)="save()">
+  
   <table class="table table-sm table-new-destination" [@newDestinationAnimation]="newDestinationTrigger">
     <tbody class="table-body">
       <tr>
-        <th scope="row"></th>
-        <td><input #city type="text" class="form-control shadow-sm" placeholder="City"></td>
-        <td><input type="text" class="form-control shadow-sm" placeholder="ZipCode"></td>
-        <td><input type="text" class="form-control shadow-sm" placeholder="Wage"></td>
+        <th class="flex" scope="row"><button type="submit" class="btn btn-primary margin-left-auto" [disabled]="!destinationForm.valid">Save</button></th>
+        <td><input #city type="text" class="form-control shadow-sm" placeholder="City" formControlName="city"></td>
+        <td><input type="text" class="form-control shadow-sm" placeholder="ZipCode" formControlName="zipCode"></td>
+        <td><input type="text" class="form-control shadow-sm" placeholder="Wage" formControlName="wage"></td>
       </tr>
     </tbody>
   </table>
+</form>
+  
 </div>
 
 <div class="jumbotron border bg-light full-center destinations shadow-very-very-big" [@destinationAnimation]="animationTrigger">
