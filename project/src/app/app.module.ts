@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllEmployeesComponent } from './_components/all-employees/all-employees.component';
 import { DestinationsComponent } from './_components/destinations/destinations.component';
 import { PageNotFoundComponent } from './_components/page-not-found/page-not-found.component';
+import { BusinessTripsComponent } from './_components/business-trips/business-trips.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PageNotFoundComponent } from './_components/page-not-found/page-not-fou
     EmployeeComponent,
     AllEmployeesComponent,
     DestinationsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BusinessTripsComponent
   ],
   imports: [
     BrowserModule,

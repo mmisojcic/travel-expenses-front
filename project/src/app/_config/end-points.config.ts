@@ -1,5 +1,5 @@
 export const endPoint = {
-  baseUrl: 'http://localhost:8083',
+  baseUrl: 'localhost:8083',
   login: '/login',
   user: '/user',
   register: '/register'
