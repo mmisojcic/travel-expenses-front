@@ -8,7 +8,7 @@ import { employeeAnimation, businessTripAnimation } from 'src/app/_animations/bu
   animations: [employeeAnimation, businessTripAnimation]
 })
 export class BusinessTripsComponent implements OnInit {
- arr = [1];
+ arr = [1,2,3,4,5,6,7,8,9,10];
 animationTrigger = 'closed';
   constructor() { }
 
