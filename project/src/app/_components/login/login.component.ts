@@ -1,7 +1,8 @@
+import { Data } from './../../_tests/data.provider';
 import { MsgDTO } from './../../_dto/msg.dto';
 import { DataConverter } from './../../_converters/data.converter';
 import { HttpService } from 'src/app/_services/http.service';
-import { UserService } from './../../_services/user.service';
+import { EmployeeService } from '../../_services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/_models/user.model';
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(
-    private userService: UserService,
+    private employeeService: EmployeeService,
     private http: HttpService,
     private router: Router
   ) {}
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.userService.userCredentials = new User(
+    this.employeeService.userCredentials = new User(
       this.loginForm.get('username').value,
       this.loginForm.get('password').value
     );
@@ -51,18 +52,20 @@ export class LoginComponent implements OnInit {
     this.http
       .login(
         endPoint.baseUrl + endPoint.login,
-        DataConverter.userCredentialsToJson(this.userService.userCredentials)
+        DataConverter.userCredentialsToJson(
+          this.employeeService.userCredentials
+        )
       )
       .subscribe(
         res => {
-          this.userService.employee = DataConverter.jsonToEmployee(res);
+          this.employeeService.employee = DataConverter.jsonToEmployee(res);
         },
         err => {
           console.log('http error on login' + err);
-          this.userService.employee = DataConverter.jsonToEmployee(
-            this.http.json
+          this.employeeService.employee = DataConverter.jsonToEmployee(
+            Data.employee
           );
-          console.log(this.userService.employee);
+          console.log(this.employeeService.employee);
         }
       );
   }

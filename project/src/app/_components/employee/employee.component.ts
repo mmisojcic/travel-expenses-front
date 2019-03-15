@@ -1,3 +1,4 @@
+import { FormGroup, FormControl } from '@angular/forms';
 import { TripStatus } from './../../_models/tripStatus.model';
 import { BillItem } from './../../_models/bill-item.model';
 import { BusinessTrip } from './../../_models/business-trip.model';
@@ -5,8 +6,8 @@ import {
   businessTripAnimation,
   employeeAnimation
 } from './../../_animations/business-trip.animation';
-import { UserService } from './../../_services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../../_services/employee.service';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Employee } from 'src/app/_models/employee.model';
 
 import { HttpService } from 'src/app/_services/http.service';
@@ -20,6 +21,8 @@ import { Bill } from 'src/app/_models/bill.model';
   animations: [businessTripAnimation, employeeAnimation]
 })
 export class EmployeeComponent implements OnInit {
+  statusForm: FormGroup;
+
   employee: Employee = new Employee();
   businesTrip: BusinessTrip = new BusinessTrip();
 
@@ -31,7 +34,7 @@ export class EmployeeComponent implements OnInit {
     new TripStatus(4, 'canceled')
   ];
   // single status
-  status = '';
+  status = 'canceled';
 
   // animation trigger
   businessTripTrigger = 'closed';
@@ -39,19 +42,29 @@ export class EmployeeComponent implements OnInit {
   color = 'red';
 
   constructor(
-    private userService: UserService,
+    private employeeService: EmployeeService,
     private http: HttpService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.employee = this.userService.employee;
+    this.employee = this.employeeService.employee;
     this.businesTrip = this.employee.businessTrips[0];
+    // statusForm init
+    this.statusForm = new FormGroup({
+      status: new FormControl()
+    });
+  }
+
+  changeStatus() {
+    const i = this.statusForm.get('status').value - 1;
+    const status = new TripStatus(i, this.tripStatuses[i].name);
+
+    console.log(status);
   }
 
   onBusinessTrip(businessTrip: BusinessTrip) {
     this.businesTrip = businessTrip;
-    console.log(this.businesTrip);
     this.businessTripTrigger = 'open';
     this.color = this.statusColor(businessTrip.status);
   }
@@ -62,7 +75,7 @@ export class EmployeeComponent implements OnInit {
   statusColor(status?: string, select?: HTMLOptionElement) {
     // in case of option select
     if (select) {
-      select.style.color = this.colorPick(this.status);
+      select.style.color = this.colorPick(status);
     } else {
       // any other case
       return this.colorPick(status);
@@ -74,7 +87,7 @@ export class EmployeeComponent implements OnInit {
     if (status === 'ongoing') {
       color = '#17a2b8';
     } else if (status === 'upcoming') {
-      color = '#007bff';
+      color = '#ffc107';
     } else if (status === 'finished') {
       color = '#28a745';
     } else if (status === 'canceled') {
@@ -83,7 +96,7 @@ export class EmployeeComponent implements OnInit {
     return color;
   }
 
-  setSelectStatus(status: string) {
+  selectStatus(status: string) {
     this.status = status;
     console.log(this.status);
   }
