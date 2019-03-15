@@ -14,6 +14,7 @@ import { AllEmployeesComponent } from './_components/all-employees/all-employees
 import { DestinationsComponent } from './_components/destinations/destinations.component';
 import { PageNotFoundComponent } from './_components/page-not-found/page-not-found.component';
 import { Employee } from './_models/employee.model';
+import { BusinessTripsComponent } from './_components/business-trips/business-trips.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Employee } from './_models/employee.model';
     EmployeeComponent,
     AllEmployeesComponent,
     DestinationsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BusinessTripsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,72 @@
+<div class="jumbotron shadow border bg-light full-center destinations" [@employeeAnimation]="animationTrigger">
+  <h1 class="display-4">Business Trips</h1>
+  <h4>Business Trips details</h4>
+  <hr class="my-4">
+  <table class="table table-sm table-destinations table-bordered">
+    <thead class="thead-dark rounded">
+      
+    <thead class="thead-dark rounded">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Wage</th>
+          <th scope="col">Number of Employees</th>
+      </thead>
+      <tbody class="table-body shadow-sm">
+          <tr *ngFor="let i of arr" (click)="onBusinessTrip(i)">
+            <th scope="row">{{i}}</th>
+            <td>Belgrade</td>
+            <td>12.12.2012</td>
+            <td>15.12.2012.</td>
+            <td>Canceled</td>
+            <td>55</td>
+            <td>12</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+    <div class="jumbotron border bg-light full-center destinations shadow-very-very-big" [@businessTripAnimation]="animationTrigger">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseBusinessTrip()">
+          <span aria-hidden="true">&#8600;</span>
+        </button>
+        <h1 class="display-4">Business Trip #1</h1>
+        <h4>Business Trip Details</h4>
+        <hr class="my-4">
+        <div class="row ">
+          <div class="col-sm-5 border-right">
+            <p class="lead">City: Belgrade</p>
+            <p class="lead">Start Date: 12.12.2012.</p>
+            <p class="lead">End Date: 15.12.2012.</p>
+            <p class="lead">Wage: 55</p>
+            <p class ="lead">Number of Employees: 12</p>
+            <!-- <form class="form-inline" *ngIf="true">
+              <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">New wage:</label>
+              <input type="text" class="form-control shadow-sm" placeholder="Wage">
+              <button type="submit" class="btn btn-primary ml-2">Change</button>
+            </form> -->
+          </div>
+          <div class="col-sm-7">
+            <p class="lead">Employees on business trip</p>
+            <table class="table table-sm table-destinations table-bordered">
+              <thead class="thead-dark rounded">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                </tr>
+              </thead>
+              <tbody class="table-body shadow-sm">
+                <tr *ngFor="let i of arr" (click)="onDestination(i)">
+                  <th scope="row">{{i}}</th>
+                  <td>Petar</td>
+                  <td>Petrovic</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    
