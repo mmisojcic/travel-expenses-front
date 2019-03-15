@@ -18,7 +18,7 @@ import { DestinationDTO } from './_dto/destination.dto';
 })
 export class AppComponent implements OnInit {
   title = 'Business trips';
-  activeLink = '';
+  activeLink = 'false';
 
   username = 'marko';
   dropdownMenu = false;
@@ -41,6 +41,23 @@ export class AppComponent implements OnInit {
     });
   }
 
+  onBusinessTrips() {
+    // this.http.getDestinations(endPoint.destinations).subscribe(
+    //   (res: DestinationDTO[]) => {
+    //     this.destinationService.destinations = DataConverter.jsonToDestinations(
+    //       res
+    //     );
+    //   },
+    //   err => {
+    //     console.log('get destinations error ' + err.status);
+    //     this.destinationService.destinations = DataConverter.jsonToDestinations(
+    //       Data.destinations
+    //     );
+    //     console.log(this.destinationService.destinations);
+    //   }
+    // );
+    this.activeLink = '/businesstrips';
+  }
   onDestinations() {
     this.http.getDestinations(endPoint.destinations).subscribe(
       (res: DestinationDTO[]) => {
@@ -56,7 +73,7 @@ export class AppComponent implements OnInit {
         console.log(this.destinationService.destinations);
       }
     );
-    this.activeLink = 'destinations';
+    this.activeLink = '/destinations';
   }
 
   onLogout() {
