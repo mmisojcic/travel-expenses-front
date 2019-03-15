@@ -18,6 +18,7 @@ import { DestinationDTO } from './_dto/destination.dto';
 })
 export class AppComponent implements OnInit {
   title = 'Business trips';
+  activeLink = '';
 
   username = 'marko';
   dropdownMenu = false;
@@ -55,6 +56,7 @@ export class AppComponent implements OnInit {
         console.log(this.destinationService.destinations);
       }
     );
+    this.activeLink = 'destinations';
   }
 
   onLogout() {
