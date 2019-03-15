@@ -1,4 +1,5 @@
-import { UserService } from './../../_services/user.service';
+import { Data } from './../../_tests/data.provider';
+import { EmployeeService } from '../../_services/employee.service';
 import { HttpService } from 'src/app/_services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -13,7 +14,10 @@ import { endPoint } from 'src/app/_config/end-points.config';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor(private http:HttpService, private userService:UserService) { }
+  constructor(
+    private http: HttpService,
+    private employeeService: EmployeeService
+  ) {}
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -37,26 +41,28 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.userService.registerUserData = new RegisterUserData(
+    this.employeeService.registerUserData = new RegisterUserData(
       this.registerForm.get('username').value,
       this.registerForm.get('password').value,
       this.registerForm.get('firstName').value,
       this.registerForm.get('lastName').value
     );
-    console.log(this.userService.registerUserData)
+    console.log(this.employeeService.registerUserData);
     this.http
       .register(
         endPoint.baseUrl + endPoint.register,
-        DataConverter.registerUserDataToJson(this.userService.registerUserData)
+        DataConverter.registerUserDataToJson(
+          this.employeeService.registerUserData
+        )
       )
       .subscribe(
         res => {
-          this.userService.employee = DataConverter.jsonToEmployee(res);
+          this.employeeService.employee = DataConverter.jsonToEmployee(res);
         },
         err => {
           console.log('http error on register');
-          this.userService.employee = DataConverter.jsonToEmployee(
-            this.http.json
+          this.employeeService.employee = DataConverter.jsonToEmployee(
+            Data.employee
           );
         }
       );

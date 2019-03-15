@@ -1,5 +1,5 @@
-import { SessionToken } from './../_config/session.config';
-import { Employee } from './../_models/employee.model';
+import { SessionToken } from '../_config/session.config';
+import { Employee } from '../_models/employee.model';
 import { DataConverter } from '../_converters/data.converter';
 import { Injectable } from '@angular/core';
 import { User } from '../_models/user.model';
@@ -11,15 +11,15 @@ import { RegisterUserData } from '../_models/register-data.model';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class EmployeeService {
   transferSetupData: Subject<any> = new Subject();
   session: SessionToken;
   userCredentials: User;
   registerUserData: RegisterUserData;
 
-  employee: Employee = new Employee();
-
   constructor(private router: Router) {}
+  // setter and getter for employee
+  employee: Employee = new Employee();
 
   // basic user setup : admin menu, username display, session, navigate to user url
   setUpUser() {

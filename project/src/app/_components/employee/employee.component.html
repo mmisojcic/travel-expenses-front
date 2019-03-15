@@ -75,11 +75,11 @@
     <div class="col-sm-6">
       <p class="lead">Total spent: {{businesTrip.billsTotal}}$</p>
       <p class="lead" *ngIf="true">Status: <span class="uppercase" [ngStyle]="{'color': color}">{{businesTrip.status}}</span></p>
-      <form class="form-inline" *ngIf="true">
+      <form [formGroup]="statusForm" (ngSubmit)="changeStatus()" class="form-inline" *ngIf="true">
         <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
-        <select #select (change)="statusColor(select)" [ngStyle]="{'color': statusColor(businesTrip.status)}" class="uppercase custom-select my-1 mr-sm-2 shadow-sm"
-          id="inlineFormCustomSelectPref">
-          <option #option class="uppercase" [value]="ind" *ngFor="let status of tripStatuses;let ind = index"
+        <select #select (change)="statusColor(status, select)" [ngStyle]="{'color': statusColor(businesTrip.status)}" class="uppercase custom-select my-1 mr-sm-2 shadow-sm"
+          id="inlineFormCustomSelectPref" formControlName="status">
+          <option #option class="uppercase" [value]="tripStatuses[ind].id" *ngFor="let status of tripStatuses;let ind = index"
             [selected]="businesTrip.status === status.name" [ngStyle]="{'color': statusColor(status.name)}">
             {{status.name}}
           </option>

@@ -1,3 +1,5 @@
+import { Destinations } from './../_models/destinations.model';
+import { DestinationsDTO } from './../_dto/destinations.dto';
 import { MsgDTO } from './../_dto/msg.dto';
 import { UserCredentialsDTO } from './../_dto/user-credentials.dto';
 import { EmployeeDTO } from './../_dto/employee.dto';
@@ -5,7 +7,8 @@ import { Employee } from '../_models/employee.model';
 import { User } from '../_models/user.model';
 import { RegisterUserDataDTO } from '../_dto/register-data.dto';
 import { RegisterUserData } from '../_models/register-data.model';
-import { Msg } from '../_components/login/login.component';
+import { Destination } from '../_models/destination.model';
+import { DestinationDTO } from '../_dto/destination.dto';
 
 export class DataConverter {
   // converts user login data to JSON
@@ -50,6 +53,11 @@ export class DataConverter {
       role: model.role,
       businessTrips: model.businessTrips
     };
+  }
+
+  // convert JSON data to Destinations
+  static jsonToDestinations(json: DestinationDTO[]): Destination[] {
+    return json;
   }
 
   // static jsontotest(json: any): Msg {

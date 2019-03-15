@@ -1,35 +1,71 @@
+import { WageInfo } from './../../_models/wage-info.model';
+import { DestinationsService } from './../../_services/destinations.service';
+import { Destination } from './../../_models/destination.model';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {
+  destinationAnimation,
   newDestinationAnimation,
-  destinationAnimation
+  destinationDimAnimation
 } from 'src/app/_animations/destination.animation';
 
 @Component({
   selector: 'app-destinations',
   templateUrl: './destinations.component.html',
   styleUrls: ['./destinations.component.scss'],
-  animations: [newDestinationAnimation, destinationAnimation]
+  animations: [
+    destinationAnimation,
+    newDestinationAnimation,
+    destinationDimAnimation
+  ]
 })
 export class DestinationsComponent implements OnInit {
+  destination: Destination = new Destination();
+  destinations: Destination[];
+  wages: WageInfo[] = [];
+
+  destinationForm: FormGroup;
+  wageForm: FormGroup;
+
   newDestinationTrigger = 'closed';
-  destinationTrigger = 'closed';
+  animationTrigger = 'closed';
 
   edit = false;
   addButtonCaption = 'Add new';
   editButtonCaption = 'Edit';
 
-  // testArr
-  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  constructor() {}
+  constructor(private destinationService: DestinationsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('init');
+    this.destinations = this.destinationService.destinations;
+    this.destinationForm = new FormGroup({
+      city: new FormControl(null, [
+        // Validators.required
+        // Validators.pattern('^[A-Z][a-z][0-9]{2,30}$')
+      ]),
+      zipCode: new FormControl(null, [
+        // Validators.required
+        // Validators.pattern('^[A-Z][0-9]{6, 20}$')
+      ]),
+      wage: new FormControl(null, [
+        // Validators.required
+        // Validators.pattern('^[A-Z][0-9]{6, 20}$')
+      ])
+    });
+    this.wageForm = new FormGroup({
+      amount: new FormControl(null)
+    });
+  }
 
   onDestination(index: number) {
-    this.destinationTrigger = 'open';
+    this.wages = this.destinations[index].wages;
+    this.destination = this.destinations[index];
+    this.animationTrigger = 'open';
     console.log(index);
   }
   onCloseDestination() {
-    this.destinationTrigger = 'closed';
+    this.animationTrigger = 'closed';
   }
 
   onNewDestinations(input: HTMLInputElement) {
@@ -37,8 +73,13 @@ export class DestinationsComponent implements OnInit {
       ? (this.newDestinationTrigger = 'open')
       : (this.newDestinationTrigger = 'closed');
     this.addButtonCaption === 'Add new'
-      ? (this.addButtonCaption = 'Save')
+      ? (this.addButtonCaption = 'Cancel')
       : (this.addButtonCaption = 'Add new');
     input.focus();
   }
+
+  onWageChange() {
+    this.destination.wage = this.wageForm.get('amount').value;
+  }
+  onSave() {}
 }
