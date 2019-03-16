@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { DataConverter } from 'src/app/_converters/data.converter';
 import { RegisterUserData } from 'src/app/_models/register-data.model';
 import { endPoint } from 'src/app/_config/end-points.config';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   constructor(
     private http: HttpService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -41,19 +43,17 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.employeeService.registerUserData = new RegisterUserData(
+    this.userService.registerUserData = new RegisterUserData(
       this.registerForm.get('username').value,
       this.registerForm.get('password').value,
       this.registerForm.get('firstName').value,
       this.registerForm.get('lastName').value
     );
-    console.log(this.employeeService.registerUserData);
+    console.log(this.userService.registerUserData);
     this.http
       .register(
         endPoint.baseUrl + endPoint.register,
-        DataConverter.registerUserDataToJson(
-          this.employeeService.registerUserData
-        )
+        DataConverter.registerUserDataToJson(this.userService.registerUserData)
       )
       .subscribe(
         res => {

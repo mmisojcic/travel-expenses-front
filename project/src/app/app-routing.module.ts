@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'businesstrips', component: BusinessTripsComponent },
   { path: '**', component: PageNotFoundComponent }
- 
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/_models/user.model';
 import { endPoint } from 'src/app/_config/end-points.config';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/_services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(
     private employeeService: EmployeeService,
+    private userService: UserService,
     private http: HttpService,
     private router: Router
   ) {}
@@ -35,33 +37,22 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.employeeService.userCredentials = new User(
+    this.userService.userCredentials = new User(
       this.loginForm.get('username').value,
       this.loginForm.get('password').value
     );
-    // this.http
-    //   .test(
-    //     endPoint.baseUrl + endPoint.login,
-    //     DataConverter.userCredentialsToJson(this.userService.userCredentials)
-    //   )
-    //   .subscribe(res => {
-    //     const msg = DataConverter.jsontotest(res);
-    //     alert(msg.msg);
-    //   });
 
     this.http
       .login(
         endPoint.baseUrl + endPoint.login,
-        DataConverter.userCredentialsToJson(
-          this.employeeService.userCredentials
-        )
+        DataConverter.userCredentialsToJson(this.userService.userCredentials)
       )
       .subscribe(
         res => {
           this.employeeService.employee = DataConverter.jsonToEmployee(res);
         },
         err => {
-          console.log('http error on login' + err);
+          console.log('http error on login ' + err.status);
           this.employeeService.employee = DataConverter.jsonToEmployee(
             Data.employee
           );

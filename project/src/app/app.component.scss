@@ -1,26 +1,21 @@
-.dropdown-menu {
-  z-index: 2000;
-  transform: translateX(-53%);
+.dropdown-menu-x {
+  position: absolute;
+  z-index: -1;
+  top: 102%;
+  left: 90%;
   transition: .3s;
-}
-
-.dropdown-menu-show {
+  background-color: #fff;
   display: block;
-  transition: .3s;
+  transform-origin: top right;
+  overflow: hidden;
 }
 
-.dropdown-menu-hide {
-  display: none;
-  transition: .3s;
-}
 
 .navbar {
+  z-index: 221;
   height: 60x;
 }
 
-.nav-pills {
-  padding: 15px 0;
-}
 
 .nav-link {
   transition: .3s;

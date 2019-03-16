@@ -10,15 +10,18 @@ import { Router } from '@angular/router';
 import { routingAnimation } from './_animations/routing.animation';
 import { HttpService } from './_services/http.service';
 import { DestinationDTO } from './_dto/destination.dto';
+import { dropdownAnimation } from './_animations/dropdown.animation';
+import { UserService } from './_services/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [routingAnimation]
+  animations: [routingAnimation, dropdownAnimation]
 })
 export class AppComponent implements OnInit {
   title = 'Business trips';
   activeLink = 'false';
+  animationTrigger = 'closed';
 
   username = 'marko';
   dropdownMenu = false;
@@ -28,13 +31,14 @@ export class AppComponent implements OnInit {
   constructor(
     private destinationService: DestinationsService,
     private http: HttpService,
+    private userService: UserService,
     private employeeService: EmployeeService,
     private router: Router
   ) {}
 
   ngOnInit() {
     // get basic setup data for curent user from userservice via Subject
-    this.employeeService.transferSetupData.subscribe(data => {
+    this.userService.transferSetupData.subscribe(data => {
       this.adminMenu = data.adminMenu;
       this.userMenu = data.userMenu;
       this.username = data.username;
@@ -56,6 +60,7 @@ export class AppComponent implements OnInit {
     //     console.log(this.destinationService.destinations);
     //   }
     // );
+    this.router.navigateByUrl('/businesstrips');
     this.activeLink = '/businesstrips';
   }
   onDestinations() {
@@ -76,10 +81,14 @@ export class AppComponent implements OnInit {
     this.activeLink = '/destinations';
   }
 
+  onUserInfo() {
+    this.router.navigateByUrl('/user/' + this.employeeService.employee.id);
+    this.closeDropdownMenu();
+  }
   onLogout() {
-    sessionStorage.removeItem(this.employeeService.session.name);
+    sessionStorage.removeItem(this.userService.session.name);
     this.employeeService.employee = undefined;
-    this.employeeService.userCredentials = undefined;
+    this.userService.userCredentials = undefined;
     this.adminMenu = false;
     this.userMenu = false;
     this.router.navigateByUrl('/login');
@@ -87,16 +96,12 @@ export class AppComponent implements OnInit {
   }
 
   onDropdownMenu() {
-    this.dropdownMenu
-      ? (this.dropdownMenu = false)
-      : (this.dropdownMenu = true);
-    console.log(this.dropdownMenu);
+    this.animationTrigger === 'closed'
+      ? (this.animationTrigger = 'open')
+      : (this.animationTrigger = 'closed');
   }
 
   closeDropdownMenu() {
-    if (this.dropdownMenu) {
-      this.dropdownMenu = false;
-    }
-    console.log(this.dropdownMenu);
+    this.animationTrigger = 'closed';
   }
 }

@@ -1,4 +1,4 @@
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TripStatus } from './../../_models/tripStatus.model';
 import { BillItem } from './../../_models/bill-item.model';
 import { BusinessTrip } from './../../_models/business-trip.model';
@@ -24,7 +24,7 @@ export class EmployeeComponent implements OnInit {
   statusForm: FormGroup;
 
   employee: Employee = new Employee();
-  businesTrip: BusinessTrip = new BusinessTrip();
+  currentBusinessTrip: BusinessTrip = new BusinessTrip();
 
   // mock status array. later to be filled with real data
   tripStatuses = [
@@ -34,7 +34,7 @@ export class EmployeeComponent implements OnInit {
     new TripStatus(4, 'canceled')
   ];
   // single status
-  status = 'canceled';
+  // status = 'upcoming';
 
   // animation trigger
   businessTripTrigger = 'closed';
@@ -49,22 +49,23 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.employee = this.employeeService.employee;
-    this.businesTrip = this.employee.businessTrips[0];
+    this.currentBusinessTrip = this.employee.businessTrips[0];
     // statusForm init
     this.statusForm = new FormGroup({
-      status: new FormControl()
+      status: new FormControl(Validators.required)
     });
   }
 
   changeStatus() {
-    const i = this.statusForm.get('status').value - 1;
-    const status = new TripStatus(i, this.tripStatuses[i].name);
+    const i = this.statusForm.get('status').value;
+    const status = new TripStatus(i, this.tripStatuses[i - 1].name);
 
     console.log(status);
   }
 
   onBusinessTrip(businessTrip: BusinessTrip) {
-    this.businesTrip = businessTrip;
+    this.currentBusinessTrip = businessTrip;
+    // this.status = businessTrip.status;
     this.businessTripTrigger = 'open';
     this.color = this.statusColor(businessTrip.status);
   }
@@ -85,7 +86,7 @@ export class EmployeeComponent implements OnInit {
   colorPick(status) {
     let color;
     if (status === 'ongoing') {
-      color = '#17a2b8';
+      color = '#007bff';
     } else if (status === 'upcoming') {
       color = '#ffc107';
     } else if (status === 'finished') {
@@ -97,8 +98,9 @@ export class EmployeeComponent implements OnInit {
   }
 
   selectStatus(status: string) {
-    this.status = status;
-    console.log(this.status);
+    // this.status = status;
+    // console.log(this.status);
+    console.log(this.statusForm);
   }
 
   dateFormater(date: Date) {}

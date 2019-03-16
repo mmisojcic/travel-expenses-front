@@ -4,22 +4,21 @@
     Business trips
   </a>
 
-  <div class="btn-group">
-    <button *ngIf="userMenu" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-      aria-haspopup="true" aria-expanded="false" (click)="onDropdownMenu()">
+  <div class="dropdown">
+    <button (click)="onDropdownMenu()" *ngIf="userMenu" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       {{username}}
     </button>
-    <div class="dropdown-menu shadow-sm dropdown-menu-hide" [ngClass]="{'dropdown-menu-hide': !dropdownMenu, 'dropdown-menu-show':dropdownMenu}">
-      <a class="dropdown-item" href="#">Edit account</a>
-      <!-- <a class="dropdown-item" href="#">Nesto?</a>
-      <a class="dropdown-item" href="#">Nesto?</a> -->
-      <div class="dropdown-divider"></div>
-      <button class="dropdown-item" (click)="onLogout()">Logout</button>
-    </div>
+  </div>
+  <div class="dropdown-menu dropdown-menu-x display-block shadow" aria-labelledby="dropdownMenu2" [@dropdownAnimation]="animationTrigger">
+    <button class="dropdown-item" type="button" (click)="onUserInfo()">Info</button>
+    <button class="dropdown-item" type="button">Creditentials</button>
+    <div class="dropdown-divider"></div>
+    <button class="dropdown-item" type="button" (click)="onLogout()">Logout</button>
   </div>
 </nav>
 
-<div class="container-fluid container-main">
+<div class="container-fluid container-main" (click)="closeDropdownMenu()">
   <div class="row">
     <div class="col-sm-2 border-right bg-light" *ngIf="adminMenu">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">

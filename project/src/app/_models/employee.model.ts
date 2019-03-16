@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BusinessTrip } from './business-trip.model';
-// @Injectable({
-//   providedIn: 'root'
-// })
+
 export class Employee {
   constructor(
     public id?: number,

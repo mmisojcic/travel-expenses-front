@@ -70,6 +70,7 @@ form {
   color: #fff !important;
   cursor: pointer !important;
 }
+
 .inactive {
   background-color: transparent;
   color: #007bff !important;
@@ -80,4 +81,8 @@ form {
     color: #fff !important;
     cursor: pointer !important;
   }
+}
+
+.display-block {
+  display: block;
 }

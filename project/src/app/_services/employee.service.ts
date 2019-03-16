@@ -12,38 +12,8 @@ import { RegisterUserData } from '../_models/register-data.model';
   providedIn: 'root'
 })
 export class EmployeeService {
-  transferSetupData: Subject<any> = new Subject();
-  session: SessionToken;
-  userCredentials: User;
-  registerUserData: RegisterUserData;
-
-  constructor(private router: Router) {}
   // setter and getter for employee
   employee: Employee = new Employee();
 
-  // basic user setup : admin menu, username display, session, navigate to user url
-  setUpUser() {
-    // later compare employee.username with userCreditentials.username
-    if (this.employee.username !== undefined) {
-      const userSetupData = new UserSetupData(
-        true,
-        this.employee.role === 'admin' ? true : false,
-        this.employee.username
-      );
-      // setup new session
-      this.session = {
-        name: 'session',
-        data: { uid: this.employee.id, start: new Date().toLocaleString() }
-      };
-      // send userSetupData to subscribing components
-      this.transferSetupData.next(userSetupData);
-      // store session in sessionStorage
-      sessionStorage.setItem(
-        this.session.name,
-        JSON.stringify(this.session.data)
-      );
-      // navigate user to his configured url
-      this.router.navigateByUrl('/user/' + this.employee.id);
-    }
-  }
+  constructor(private router: Router) {}
 }
