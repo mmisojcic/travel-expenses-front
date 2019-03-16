@@ -9,6 +9,8 @@ import { RegisterUserDataDTO } from '../_dto/register-data.dto';
 import { RegisterUserData } from '../_models/register-data.model';
 import { Destination } from '../_models/destination.model';
 import { DestinationDTO } from '../_dto/destination.dto';
+import { CredentialsChange } from '../_models/credentials-change.model';
+import { CredentialsChangeDTO } from '../_dto/credentials-change.dto';
 
 export class DataConverter {
   // converts user login data to JSON
@@ -58,6 +60,17 @@ export class DataConverter {
   // convert JSON data to Destinations
   static jsonToDestinations(json: DestinationDTO[]): Destination[] {
     return json;
+  }
+
+  static credentialsChangeToJson(
+    model: CredentialsChange
+  ): CredentialsChangeDTO {
+    return {
+      username: model.username,
+      email: model.email,
+      newPassword: model.newPassword,
+      password: model.password
+    };
   }
 
   // static jsontotest(json: any): Msg {

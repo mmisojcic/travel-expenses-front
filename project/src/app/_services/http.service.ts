@@ -1,3 +1,4 @@
+import { CredentialsChangeDTO } from './../_dto/credentials-change.dto';
 import { DestinationDTO } from './../_dto/destination.dto';
 import { finalize } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -6,6 +7,7 @@ import { UserCredentialsDTO } from '../_dto/user-credentials.dto';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterUserDataDTO } from '../_dto/register-data.dto';
 import { UserService } from './user.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +51,14 @@ export class HttpService {
     return this.http.post(url, json).pipe(
       finalize(() => {
         console.log('desination get');
+      })
+    );
+  }
+
+  changeCredentials(url: string, json: CredentialsChangeDTO) {
+    return this.http.post(url, json, { observe: 'response' }).pipe(
+      finalize(() => {
+        console.log('credentials change done');
       })
     );
   }

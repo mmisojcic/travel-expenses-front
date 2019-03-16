@@ -1,3 +1,6 @@
+import { DataConverter } from './../../_converters/data.converter';
+import { HttpService } from 'src/app/_services/http.service';
+import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/_services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/_services/employee.service';
@@ -7,6 +10,8 @@ import {
   formAnimation,
   infoDimAnimation
 } from '../../_animations/credentials.animation';
+import { CredentialsChange } from 'src/app/_models/credentials-change.model';
+import { endPoint } from 'src/app/_config/end-points.config';
 
 @Component({
   selector: 'app-credentials',
@@ -16,6 +21,7 @@ import {
 })
 export class CredentialsComponent implements OnInit {
   credentials: User;
+  credentialsChange: CredentialsChange;
   employee: Employee;
   changeButtonCaption = 'Change';
   credentialsFormShow = false;
@@ -23,15 +29,57 @@ export class CredentialsComponent implements OnInit {
   username = false;
   email = false;
   newPassword = false;
+  credentialsFrom: FormGroup;
+  infoMessageShow = false;
 
   constructor(
     private userService: UserService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private http: HttpService
   ) {}
 
   ngOnInit() {
     this.credentials = this.userService.userCredentials;
     this.employee = this.employeeService.employee;
+    // form init
+    this.credentialsFrom = new FormGroup({
+      username: new FormControl(),
+      newPassword: new FormControl(),
+      email: new FormControl(),
+      password: new FormControl()
+    });
+  }
+
+  onSave() {
+    // take values from form and instantiate new object with them by passing them as constructor parameters
+    this.credentialsChange = new CredentialsChange(
+      this.credentialsFrom.get('username').value === null
+        ? this.userService.userCredentials.username
+        : this.credentialsFrom.get('username').value,
+      this.credentialsFrom.get('email').value,
+      this.credentialsFrom.get('newPassword').value,
+      this.credentialsFrom.get('password').value
+    );
+
+    this.http
+      .changeCredentials(
+        endPoint.changeCredentials,
+        DataConverter.credentialsChangeToJson(this.credentialsChange)
+      )
+      .subscribe(
+        res => {
+          if (res.ok) {
+            this.onCancel();
+            this.infoMessageShow = true;
+          }
+        },
+        err => {
+          console.log(
+            DataConverter.credentialsChangeToJson(this.credentialsChange)
+          );
+          console.log('change credentials error ' + err.status);
+        }
+      );
   }
 
   toggleForm(option: string) {
@@ -51,6 +99,7 @@ export class CredentialsComponent implements OnInit {
     this.username = false;
     this.newPassword = false;
     this.email = false;
+    this.credentialsFrom.reset();
   }
 
   formSetup(option: string) {

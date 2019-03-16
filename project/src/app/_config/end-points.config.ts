@@ -3,5 +3,6 @@ export const endPoint = {
   login: '/login',
   user: '/user',
   register: '/register',
-  destinations: '/destinations'
+  destinations: '/destinations',
+  changeCredentials: '/smt'
 };
