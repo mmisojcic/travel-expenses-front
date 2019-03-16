@@ -1,3 +1,4 @@
+import { CredentialsComponent } from './_components/credentials/credentials.component';
 import { EmployeeComponent } from './_components/employee/employee.component';
 import { LoginComponent } from './_components/login/login.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user/:id', component: EmployeeComponent },
+  { path: 'user/:id/credentials', component: CredentialsComponent },
   { path: 'allemployees', component: AllEmployeesComponent },
   { path: 'destinations', component: DestinationsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },

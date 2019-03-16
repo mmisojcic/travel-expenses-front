@@ -15,6 +15,7 @@ import { DestinationsComponent } from './_components/destinations/destinations.c
 import { PageNotFoundComponent } from './_components/page-not-found/page-not-found.component';
 import { Employee } from './_models/employee.model';
 import { BusinessTripsComponent } from './_components/business-trips/business-trips.component';
+import { CredentialsComponent } from './_components/credentials/credentials.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BusinessTripsComponent } from './_components/business-trips/business-tr
     AllEmployeesComponent,
     DestinationsComponent,
     PageNotFoundComponent,
-    BusinessTripsComponent
+    BusinessTripsComponent,
+    CredentialsComponent
   ],
   imports: [
     BrowserModule,

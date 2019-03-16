@@ -44,7 +44,10 @@ export class AppComponent implements OnInit {
       this.username = data.username;
     });
   }
-
+  onEmployees() {
+    this.router.navigateByUrl('/allemployees');
+    this.activeLink = '/allemployees';
+  }
   onBusinessTrips() {
     // this.http.getDestinations(endPoint.destinations).subscribe(
     //   (res: DestinationDTO[]) => {
@@ -83,6 +86,12 @@ export class AppComponent implements OnInit {
 
   onUserInfo() {
     this.router.navigateByUrl('/user/' + this.employeeService.employee.id);
+    this.closeDropdownMenu();
+  }
+  onCredentials() {
+    this.router.navigateByUrl(
+      '/user/' + this.employeeService.employee.id + '/credentials'
+    );
     this.closeDropdownMenu();
   }
   onLogout() {

@@ -22,6 +22,6 @@ export const dropdownAnimation = trigger('dropdownAnimation', [
       opacity: 0
     })
   ),
-  transition('open => closed', [animate('0.3s ease-in')]),
-  transition('closed => open', [animate('0.3s ease-out')])
+  transition('open => closed', [animate('0.3s')]),
+  transition('closed => open', [animate('0.3s')])
 ]);
