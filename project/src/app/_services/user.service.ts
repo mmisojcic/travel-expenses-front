@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 export class UserService {
   transferSetupData: Subject<any> = new Subject();
   session: SessionToken;
-  userCredentials: User;
+  userCredentials: User = new User();
   registerUserData: RegisterUserData;
+  userSetupData: UserSetupData;
 
   constructor(
     private employeeService: EmployeeService,
@@ -25,28 +26,30 @@ export class UserService {
   setUpUser() {
     // later compare employee.username with userCreditentials.username
     if (this.employeeService.employee.username !== undefined) {
-      const userSetupData = new UserSetupData(
+      this.session = {
+        uid: this.employeeService.employee.id,
+        start: new Date().toLocaleString()
+      };
+      this.userSetupData = new UserSetupData(
+        'userSession',
         true,
         this.employeeService.employee.role === 'admin' ? true : false,
         this.userCredentials.username
       );
       // setup new session
-      this.session = {
-        name: 'session',
-        data: {
-          uid: this.employeeService.employee.id,
-          start: new Date().toLocaleString()
-        }
-      };
+
+      console.log(this.userCredentials);
       // send userSetupData to subscribing components
-      this.transferSetupData.next(userSetupData);
+      this.transferSetupData.next(this.userSetupData);
       // store session in sessionStorage
-      sessionStorage.setItem(
-        this.session.name,
-        JSON.stringify(this.session.data)
-      );
+      sessionStorage.setItem('userSession', JSON.stringify(this.session));
       // navigate user to his configured url
       this.router.navigateByUrl('/user/' + this.employeeService.employee.id);
     }
+  }
+
+  // get session data
+  sessionData() {
+    return JSON.parse(sessionStorage.getItem('userSession'));
   }
 }

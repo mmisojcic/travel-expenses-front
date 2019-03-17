@@ -5,7 +5,7 @@ import { endPoint } from './_config/end-points.config';
 import { DestinationsService } from './_services/destinations.service';
 import { EmployeeService } from './_services/employee.service';
 import { Employee } from './_models/employee.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { routingAnimation } from './_animations/routing.animation';
 import { HttpService } from './_services/http.service';
@@ -22,9 +22,9 @@ export class AppComponent implements OnInit {
   title = 'Business trips';
   activeLink = 'false';
   animationTrigger = 'closed';
-
-  username = 'marko';
   dropdownMenu = false;
+
+  username = 'this.userService.userSetupData.username';
   userMenu = false;
   adminMenu = false;
 
@@ -36,6 +36,12 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {}
 
+  // ngOnChanges(changes: import('@angular/core').SimpleChanges): void {
+  //   this.username = this.userService.userSetupData.username;
+  //   this.userMenu = this.userService.userSetupData.userMenu;
+  //   this.adminMenu = this.userService.userSetupData.adminMenu;
+  // }
+
   ngOnInit() {
     // get basic setup data for curent user from userservice via Subject
     this.userService.transferSetupData.subscribe(data => {
@@ -44,6 +50,7 @@ export class AppComponent implements OnInit {
       this.username = data.username;
     });
   }
+
   onEmployees() {
     this.router.navigateByUrl('/allemployees');
     this.activeLink = '/allemployees';
@@ -66,23 +73,6 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/businesstrips');
     this.activeLink = '/businesstrips';
   }
-  onDestinations() {
-    this.http.getDestinations(endPoint.destinations).subscribe(
-      (res: DestinationDTO[]) => {
-        this.destinationService.destinations = DataConverter.jsonToDestinations(
-          res
-        );
-      },
-      err => {
-        console.log('get destinations error ' + err.status);
-        this.destinationService.destinations = DataConverter.jsonToDestinations(
-          Data.destinations
-        );
-        console.log(this.destinationService.destinations);
-      }
-    );
-    this.activeLink = '/destinations';
-  }
 
   onUserInfo() {
     this.router.navigateByUrl('/user/' + this.employeeService.employee.id);
@@ -95,9 +85,11 @@ export class AppComponent implements OnInit {
     this.closeDropdownMenu();
   }
   onLogout() {
-    sessionStorage.removeItem(this.userService.session.name);
+    sessionStorage.removeItem(this.userService.userSetupData.sessionName);
     this.employeeService.employee = undefined;
-    this.userService.userCredentials = undefined;
+    this.userService.userCredentials.username = null;
+    this.userService.userCredentials.password = null;
+
     this.adminMenu = false;
     this.userMenu = false;
     this.router.navigateByUrl('/login');

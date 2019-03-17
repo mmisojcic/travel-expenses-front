@@ -25,6 +25,8 @@ export class EmployeeComponent implements OnInit {
 
   employee: Employee = new Employee();
   currentBusinessTrip: BusinessTrip = new BusinessTrip();
+  currentBusinessTripTotalBill = 0;
+  currentBusinessTripBillItemsTotal = [];
 
   // mock status array. later to be filled with real data
   tripStatuses = [
@@ -50,6 +52,11 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.employee = this.employeeService.employee;
     this.currentBusinessTrip = this.employee.businessTrips[0];
+
+    // total business trip expense
+    this.billItemsTotal();
+    this.businessTripTotal();
+    //////////////////////////////
     // statusForm init
     this.statusForm = new FormGroup({
       status: new FormControl(Validators.required)
@@ -104,4 +111,29 @@ export class EmployeeComponent implements OnInit {
   }
 
   dateFormater(date: Date) {}
+
+  billItemsTotal() {
+    // get sum of bill items
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.currentBusinessTrip.bills.length; i++) {
+      // tslint:disable-next-line:prefer-for-of
+      let sum = 0;
+      // tslint:disable-next-line:prefer-for-of
+      for (
+        let j = 0;
+        j < this.currentBusinessTrip.bills[i].billItems.length;
+        j++
+      ) {
+        sum += this.currentBusinessTrip.bills[i].billItems[j].cost;
+      }
+      this.currentBusinessTripBillItemsTotal.push(sum);
+    }
+  }
+
+  businessTripTotal() {
+    for (const b of this.currentBusinessTripBillItemsTotal) {
+      this.currentBusinessTripTotalBill += b;
+    }
+    this.currentBusinessTripTotalBill += this.currentBusinessTrip.destination.wage.amount;
+  }
 }

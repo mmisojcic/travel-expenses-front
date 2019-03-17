@@ -20,6 +20,7 @@
       </tr>
     </tbody>
     <button type="button" class="btn btn-primary add" (click)="onNewDestinations(city)">{{addButtonCaption}}</button>
+
   </table>
 
   <form [formGroup]="destinationForm" (ngSubmit)="onSave()">
@@ -34,28 +35,28 @@
       </tbody>
     </table>
   </form>
-
+  <p class="lead info-message" *ngIf="infoMessageShow">Destination saved!</p>
 </div>
 
 <div class="jumbotron border bg-light full-center destinations shadow-very-very-big" [@destinationAnimation]="animationTrigger">
   <button type="button" class="close" aria-label="Close" (click)="onCloseDestination()">
     <span aria-hidden="true">&#8600;</span>
   </button>
-  <h1 class="display-4">Destination #1</h1>
+  <h1 class="display-4">Destination #{{destination.id}}</h1>
   <h4>Destination details</h4>
   <hr class="my-4">
   <div class="row ">
-    <div class="col-sm-5 border-right">
+    <div class="col-sm-6 border-right">
       <p class="lead">City: {{destination.city}}</p>
       <p class="lead">ZipCode:{{destination.zipCode}}</p>
       <p class="lead">Wage: {{destination.wage}}</p>
       <form [formGroup]="wageForm" (ngSubmit)="onWageChange()" class="form-inline" *ngIf="true">
         <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">New wage:</label>
         <input type="text" class="form-control shadow-sm" placeholder="Wage" formControlName='amount'>
-        <button type="submit" class="btn btn-primary ml-2">Change</button>
+        <button type="submit" class="btn btn-primary ml-2" [disabled]="wageForm.invalid">Change</button>
       </form>
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-6">
       <p class="lead">Wage change history</p>
       <table class="table table-sm table-destinations table-bordered">
         <thead class="thead-dark rounded">
@@ -67,7 +68,7 @@
           </tr>
         </thead>
         <tbody class="table-body shadow-sm">
-          <tr *ngFor="let wage of wages;let i = index">
+          <tr *ngFor="let wage of destination.wages;let i = index">
             <th scope="row">{{i+1}}</th>
             <td>{{wage.startDate}}</td>
             <td>{{wage.endDate}}</td>

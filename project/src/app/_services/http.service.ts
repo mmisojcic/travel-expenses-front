@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterUserDataDTO } from '../_dto/register-data.dto';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
+import { WageInfoDTO } from '../_dto/wage-info.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -37,11 +38,10 @@ export class HttpService {
       })
     );
   }
-
+  //////////////////
   getDestinations(url: string) {
     return this.http.get(url).pipe(
       finalize(() => {
-        this.router.navigateByUrl('/destinations');
         console.log('desination get');
       })
     );
@@ -55,6 +55,14 @@ export class HttpService {
     );
   }
 
+  changeWage(url: string, json: WageInfoDTO) {
+    return this.http.post(url, json, { observe: 'response' }).pipe(
+      finalize(() => {
+        console.log('wage info saved');
+      })
+    );
+  }
+  /////////////////////
   changeCredentials(url: string, json: CredentialsChangeDTO) {
     return this.http.post(url, json, { observe: 'response' }).pipe(
       finalize(() => {

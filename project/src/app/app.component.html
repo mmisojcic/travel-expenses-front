@@ -28,7 +28,7 @@
           aria-controls="v-pills-profile" aria-selected="false" (click)="onBusinessTrips()" [ngClass]="{'active-my':activeLink === '/businesstrips', 'inactive':activeLink!=='/businesstrips'}">Business
           Trips</a>
         <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" routerLinkActive="active" role="tab"
-          aria-controls="v-pills-messages" aria-selected="false" (click)="onDestinations()" [ngClass]="{'active-my':activeLink === '/destinations', 'inactive':activeLink!=='/destinations'}">Destinations</a>
+          aria-controls="v-pills-messages" aria-selected="false" routerLink="/destinations" routerLinkActive="active">Destinations</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" role="tab" aria-controls="v-pills-settings"
           aria-selected="false">Settings</a>
       </div>

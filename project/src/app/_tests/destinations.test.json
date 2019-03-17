@@ -99,7 +99,7 @@
       }
     ]
   }, {
-    "id": 2,
+    "id": 4,
     "city": "Nis",
     "zipCode": 22000,
     "wage": 44,
@@ -131,7 +131,7 @@
       }
     ]
   }, {
-    "id": 4,
+    "id": 5,
     "city": "Kragujevac",
     "zipCode": 25600,
     "wage": 44,
@@ -167,7 +167,7 @@
       }
     ]
   }, {
-    "id": 5,
+    "id": 6,
     "city": "Krusevac",
     "zipCode": 181000,
     "wage": 44,
@@ -175,42 +175,6 @@
         "startDate": "12.2.2019",
         "endDate": "12.2.2019",
         "amount": 30
-      }, {
-        "startDate": "12.2.2018",
-        "endDate": "12.2.2019",
-        "amount": 50
-      },
-      {
-        "startDate": "12.2.2018",
-        "endDate": "12.2.2019",
-        "amount": 50
-      }, {
-        "startDate": "12.2.2018",
-        "endDate": "12.2.2019",
-        "amount": 50
-      }, {
-        "startDate": "12.2.2018",
-        "endDate": "12.2.2019",
-        "amount": 50
-      }, {
-        "startDate": "12.2.2018",
-        "endDate": "12.2.2019",
-        "amount": 50
-      }, {
-        "startDate": "12.2.2018",
-        "endDate": "12.2.2019",
-        "amount": 50
-      }
-    ]
-  }, {
-    "id": 6,
-    "city": "Belgrade",
-    "zipCode": 11000,
-    "wage": 44,
-    "wages": [{
-        "startDate": "12.2.2019",
-        "endDate": "12.2.2019",
-        "amount": 50
       }, {
         "startDate": "12.2.2018",
         "endDate": "12.2.2019",
@@ -275,7 +239,43 @@
       }
     ]
   }, {
-    "id": 2,
+    "id": 8,
+    "city": "Belgrade",
+    "zipCode": 11000,
+    "wage": 44,
+    "wages": [{
+        "startDate": "12.2.2019",
+        "endDate": "12.2.2019",
+        "amount": 50
+      }, {
+        "startDate": "12.2.2018",
+        "endDate": "12.2.2019",
+        "amount": 50
+      },
+      {
+        "startDate": "12.2.2018",
+        "endDate": "12.2.2019",
+        "amount": 50
+      }, {
+        "startDate": "12.2.2018",
+        "endDate": "12.2.2019",
+        "amount": 50
+      }, {
+        "startDate": "12.2.2018",
+        "endDate": "12.2.2019",
+        "amount": 50
+      }, {
+        "startDate": "12.2.2018",
+        "endDate": "12.2.2019",
+        "amount": 50
+      }, {
+        "startDate": "12.2.2018",
+        "endDate": "12.2.2019",
+        "amount": 50
+      }
+    ]
+  }, {
+    "id": 9,
     "city": "Nis",
     "zipCode": 22000,
     "wage": 44,
@@ -307,7 +307,7 @@
       }
     ]
   }, {
-    "id": 8,
+    "id": 10,
     "city": "Belgrade",
     "zipCode": 11000,
     "wage": 44,
@@ -344,7 +344,7 @@
     ]
   },
   {
-    "id": 1,
+    "id": 11,
     "city": "Belgrade",
     "zipCode": 11000,
     "wage": 44,
@@ -376,7 +376,7 @@
       }
     ]
   }, {
-    "id": 2,
+    "id": 12,
     "city": "Nis",
     "zipCode": 22000,
     "wage": 44,
@@ -408,7 +408,7 @@
       }
     ]
   }, {
-    "id": 3,
+    "id": 13,
     "city": "Sabac",
     "zipCode": 15000,
     "wage": 44,
@@ -444,7 +444,7 @@
       }
     ]
   }, {
-    "id": 2,
+    "id": 14,
     "city": "Nis",
     "zipCode": 22000,
     "wage": 44,
@@ -476,7 +476,7 @@
       }
     ]
   }, {
-    "id": 4,
+    "id": 15,
     "city": "Kragujevac",
     "zipCode": 25600,
     "wage": 44,
@@ -512,7 +512,7 @@
       }
     ]
   }, {
-    "id": 5,
+    "id": 16,
     "city": "Krusevac",
     "zipCode": 181000,
     "wage": 44,
@@ -548,7 +548,7 @@
       }
     ]
   }, {
-    "id": 6,
+    "id": 17,
     "city": "Belgrade",
     "zipCode": 11000,
     "wage": 44,
@@ -584,7 +584,7 @@
       }
     ]
   }, {
-    "id": 7,
+    "id": 18,
     "city": "Belgrade",
     "zipCode": 11000,
     "wage": 44,
@@ -620,7 +620,7 @@
       }
     ]
   }, {
-    "id": 2,
+    "id": 19,
     "city": "Nis",
     "zipCode": 22000,
     "wage": 44,
@@ -652,7 +652,7 @@
       }
     ]
   }, {
-    "id": 8,
+    "id": 20,
     "city": "Belgrade",
     "zipCode": 11000,
     "wage": 44,

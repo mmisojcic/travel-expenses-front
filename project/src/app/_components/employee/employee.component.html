@@ -73,7 +73,7 @@
       <p class="lead">End date: {{currentBusinessTrip.endDate}}</p>
     </div>
     <div class="col-sm-6">
-      <p class="lead">Total spent: {{currentBusinessTrip.billsTotal}}$</p>
+      <p class="lead">Total spent: {{currentBusinessTripTotalBill}}$</p>
       <p class="lead" *ngIf="true">Status: <span class="uppercase" [ngStyle]="{'color': color}">{{currentBusinessTrip.status}}</span></p>
       <!-- <form [formGroup]="statusForm" (ngSubmit)="changeStatus()" class="form-inline" *ngIf="true">
         <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
@@ -94,7 +94,7 @@
   <div class="card-row border-left border-right">
     <div class=" bill-card " *ngFor="let bill of currentBusinessTrip.bills;let i=index">
       <div class="card-header rounded shadow border">
-        <b>#{{i+1}}&nbsp;Bill total:&nbsp;{{bill.total}}$</b>
+        <b>#{{i+1}}&nbsp;Bill total:&nbsp;{{currentBusinessTripBillItemsTotal[i]}}$</b>
       </div>
       <table class="table-bills table table-sm table-bordered shadow">
         <thead class="thead-dark">

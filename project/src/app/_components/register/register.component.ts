@@ -43,13 +43,22 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    // data to be sent for registration
     this.userService.registerUserData = new RegisterUserData(
       this.registerForm.get('username').value,
       this.registerForm.get('password').value,
       this.registerForm.get('firstName').value,
       this.registerForm.get('lastName').value
     );
+    // setting up user login data
+    this.userService.userCredentials.username = this.registerForm.get(
+      'username'
+    ).value;
+    this.userService.userCredentials.password = this.registerForm.get(
+      'password'
+    ).value;
     console.log(this.userService.registerUserData);
+    // send request
     this.http
       .register(
         endPoint.baseUrl + endPoint.register,
@@ -60,7 +69,7 @@ export class RegisterComponent implements OnInit {
           this.employeeService.employee = DataConverter.jsonToEmployee(res);
         },
         err => {
-          console.log('http error on register');
+          console.log('http error on register ' + err.status);
           this.employeeService.employee = DataConverter.jsonToEmployee(
             Data.employee
           );

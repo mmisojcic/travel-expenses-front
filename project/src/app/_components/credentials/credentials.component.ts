@@ -78,12 +78,15 @@ export class CredentialsComponent implements OnInit {
             DataConverter.credentialsChangeToJson(this.credentialsChange)
           );
           console.log('change credentials error ' + err.status);
+          this.infoMessageShow = true;
+          this.onCancel();
         }
       );
   }
 
   toggleForm(option: string) {
     this.formSetup(option);
+    this.infoMessageShow = false;
     this.credentialsFormShow === false
       ? (this.credentialsFormShow = true)
       : (this.credentialsFormShow = false);

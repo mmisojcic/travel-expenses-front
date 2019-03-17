@@ -1,3 +1,5 @@
+import { WageInfoDTO } from './../_dto/wage-info.dto';
+import { WageInfo } from './../_models/wage-info.model';
 import { Destinations } from './../_models/destinations.model';
 import { DestinationsDTO } from './../_dto/destinations.dto';
 import { MsgDTO } from './../_dto/msg.dto';
@@ -59,7 +61,13 @@ export class DataConverter {
 
   // convert JSON data to Destinations
   static jsonToDestinations(json: DestinationDTO[]): Destination[] {
-    return json;
+    const destinations: Destination[] = [];
+    json.forEach(d => {
+      destinations.push(
+        new Destination(d.id, d.city, d.zipCode, d.wage, d.wages)
+      );
+    });
+    return destinations;
   }
   // convert JSON data to one Destination
   static destinationToJson(model: Destination): DestinationDTO {
@@ -69,6 +77,16 @@ export class DataConverter {
       wage: model.wage
     };
   }
+  // conver wage info data to json
+  static wageInfoToJson(model: WageInfo): WageInfoDTO {
+    return {
+      id: model.id,
+      startDate: model.startDate,
+      endDate: model.endDate,
+      amount: model.amount
+    };
+  }
+
   static credentialsChangeToJson(
     model: CredentialsChange
   ): CredentialsChangeDTO {
