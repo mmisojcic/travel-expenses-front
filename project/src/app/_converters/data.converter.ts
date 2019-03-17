@@ -61,7 +61,14 @@ export class DataConverter {
   static jsonToDestinations(json: DestinationDTO[]): Destination[] {
     return json;
   }
-
+  // convert JSON data to one Destination
+  static destinationToJson(model: Destination): DestinationDTO {
+    return {
+      city: model.city,
+      zipCode: model.zipCode,
+      wage: model.wage
+    };
+  }
   static credentialsChangeToJson(
     model: CredentialsChange
   ): CredentialsChangeDTO {

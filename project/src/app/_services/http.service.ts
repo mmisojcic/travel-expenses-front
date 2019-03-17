@@ -48,9 +48,9 @@ export class HttpService {
   }
 
   saveDestination(url: string, json: DestinationDTO) {
-    return this.http.post(url, json).pipe(
+    return this.http.post(url, json, { observe: 'response' }).pipe(
       finalize(() => {
-        console.log('desination get');
+        console.log('desination saved');
       })
     );
   }

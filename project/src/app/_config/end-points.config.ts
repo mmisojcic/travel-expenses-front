@@ -4,5 +4,6 @@ export const endPoint = {
   user: '/user',
   register: '/register',
   destinations: '/destinations',
+  destination: '/destinations',
   changeCredentials: '/smt'
 };
