@@ -70,7 +70,7 @@ export class DestinationsComponent implements OnInit {
     this.wageForm = new FormGroup({
       amount: new FormControl(null, [
         Validators.required,
-        Validators.pattern('^[0-9]{2,20}$')
+        Validators.pattern('^[0-9]{1,20}$')
       ])
     });
     if (sessionStorage.getItem('userSession')) {
@@ -245,7 +245,7 @@ export class DestinationsComponent implements OnInit {
   changeWageInView(wageInfo: WageInfo) {
     this.destinations.forEach(d => {
       if (d.id === this.destination.id) {
-        d.wage = this.wageForm.get('amount').value;
+        d.currentWage = this.wageForm.get('amount').value;
         d.wages.push(wageInfo);
         console.log(this.destinations);
         console.log(d.id);

@@ -8,7 +8,6 @@ export class BusinessTrip {
     public destination?: Destination,
     public startDate?: string,
     public endDate?: string,
-    public billsTotal?: number,
     public bills?: Bill[],
     public status?: string
   ) {}

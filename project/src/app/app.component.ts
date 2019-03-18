@@ -36,12 +36,6 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {}
 
-  // ngOnChanges(changes: import('@angular/core').SimpleChanges): void {
-  //   this.username = this.userService.userSetupData.username;
-  //   this.userMenu = this.userService.userSetupData.userMenu;
-  //   this.adminMenu = this.userService.userSetupData.adminMenu;
-  // }
-
   ngOnInit() {
     // get basic setup data for curent user from userservice via Subject
     this.userService.transferSetupData.subscribe(data => {
@@ -55,25 +49,7 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/allemployees');
     this.activeLink = '/allemployees';
   }
-  onBusinessTrips() {
-    // this.http.getDestinations(endPoint.destinations).subscribe(
-    //   (res: DestinationDTO[]) => {
-    //     this.destinationService.destinations = DataConverter.jsonToDestinations(
-    //       res
-    //     );
-    //   },
-    //   err => {
-    //     console.log('get destinations error ' + err.status);
-    //     this.destinationService.destinations = DataConverter.jsonToDestinations(
-    //       Data.destinations
-    //     );
-    //     console.log(this.destinationService.destinations);
-    //   }
-    // );
-    this.router.navigateByUrl('/businesstrips');
-    this.activeLink = '/businesstrips';
-  }
-
+  
   onUserInfo() {
     this.router.navigateByUrl('/user/' + this.employeeService.employee.id);
     this.closeDropdownMenu();

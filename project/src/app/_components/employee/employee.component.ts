@@ -134,6 +134,6 @@ export class EmployeeComponent implements OnInit {
     for (const b of this.currentBusinessTripBillItemsTotal) {
       this.currentBusinessTripTotalBill += b;
     }
-    this.currentBusinessTripTotalBill += this.currentBusinessTrip.destination.wage.amount;
+    this.currentBusinessTripTotalBill += this.currentBusinessTrip.destination.currentWage;
   }
 }

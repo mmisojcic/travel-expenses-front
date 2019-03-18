@@ -1,3 +1,5 @@
+import { BusinessTripDTO } from './../_dto/business-trip.dto';
+import { BusinessTrip } from './../_models/business-trip.model';
 import { CredentialsChangeDTO } from './../_dto/credentials-change.dto';
 import { DestinationDTO } from './../_dto/destination.dto';
 import { finalize } from 'rxjs/operators';
@@ -54,7 +56,34 @@ export class HttpService {
       })
     );
   }
+// get all business trips
+  getBusinessTrips(url: string) {
+    return this.http.get(url).pipe(
+      finalize(() => {
+        console.log('business trips get');
+      })
+    );
+  }
+// save new business trip
+  saveBusinessTrip(url: string, json:BusinessTripDTO){
+    return this.http.post(url, json, {observe:'response'}).pipe(
+      finalize(() => {
+        console.log('new business trip save done');
+      })
+    )
+  }
 
+
+getEmployeesOnTrip(url: string){
+  return this.http.get(url).pipe(
+    finalize(() => {
+      console.log('employees on business trip get')
+    })
+  );
+}
+
+
+// wage change
   changeWage(url: string, json: WageInfoDTO) {
     return this.http.post(url, json, { observe: 'response' }).pipe(
       finalize(() => {
@@ -69,5 +98,14 @@ export class HttpService {
         console.log('credentials change done');
       })
     );
+  }
+
+  // get statuses
+  getStatuses(url: string){
+    return this.http.get(url).pipe(
+      finalize(() => {
+        console.log('statuses get done');
+      })
+    )
   }
 }

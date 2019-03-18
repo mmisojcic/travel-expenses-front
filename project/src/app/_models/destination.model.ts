@@ -5,7 +5,7 @@ export class Destination {
     public id?: number,
     public city?: string,
     public zipCode?: number,
-    public wage?: WageInfo,
+    public currentWage?: number,
     public wages?: WageInfo[]
   ) {}
 }

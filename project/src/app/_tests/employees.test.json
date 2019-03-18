@@ -1,0 +1,345 @@
+[{
+    "id": "1",
+    "firstName": "Marko",
+    "lastName": "Misojcic",
+    "email": "mashan@gmail.com",
+    "username": "mmisojcic",
+    "role": "admin",
+    "businessTrips": [{
+      "id": 1,
+      "destination": {
+        "city": "Belgrade",
+        "zipCode": 11000,
+        "wage": {
+          "startDate": "12.2.2019",
+          "endDate": "12.2.2019",
+          "amount": 50
+        }
+      },
+      "startDate": "12.2.2019",
+      "endDate": "12.2.2019",
+      "bills": [{
+        "billItems": [{
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }]
+      }],
+      "status": "upcoming"
+    }]
+  },{
+    "id": "2",
+    "firstName": "Tijana",
+    "lastName": "Ivanovic",
+    "email": "mashan@gmail.com",
+    "username": "mmisojcic",
+    "role": "admin",
+    "businessTrips": [{
+      "id": 1,
+      "destination": {
+        "city": "Belgrade",
+        "zipCode": 11000,
+        "wage": {
+          "startDate": "12.2.2019",
+          "endDate": "12.2.2019",
+          "amount": 50
+        }
+      },
+      "startDate": "12.2.2019",
+      "endDate": "12.2.2019",
+      "bills": [{
+        "billItems": [{
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }]
+      }],
+      "status": "upcoming"
+    }]
+  },{
+    "id": "3",
+    "firstName": "Marko",
+    "lastName": "Misojcic",
+    "email": "mashan@gmail.com",
+    "username": "mmisojcic",
+    "role": "admin",
+    "businessTrips": [{
+      "id": 1,
+      "destination": {
+        "city": "Belgrade",
+        "zipCode": 11000,
+        "wage": {
+          "startDate": "12.2.2019",
+          "endDate": "12.2.2019",
+          "amount": 50
+        }
+      },
+      "startDate": "12.2.2019",
+      "endDate": "12.2.2019",
+      "bills": [{
+        "billItems": [{
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }]
+      }],
+      "status": "upcoming"
+    }]
+  },{
+    "id": "4",
+    "firstName": "Bojan",
+    "lastName": "Savic",
+    "email": "mashan@gmail.com",
+    "username": "mmisojcic",
+    "role": "admin",
+    "businessTrips": [{
+      "id": 1,
+      "destination": {
+        "city": "Belgrade",
+        "zipCode": 11000,
+        "wage": {
+          "startDate": "12.2.2019",
+          "endDate": "12.2.2019",
+          "amount": 50
+        }
+      },
+      "startDate": "12.2.2019",
+      "endDate": "12.2.2019",
+      "bills": [{
+        "billItems": [{
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }]
+      }],
+      "status": "upcoming"
+    }]
+  },{
+    "id": "5",
+    "firstName": "Jelena",
+    "lastName": "Djordjevic",
+    "email": "mashan@gmail.com",
+    "username": "mmisojcic",
+    "role": "admin",
+    "businessTrips": [{
+      "id": 1,
+      "destination": {
+        "city": "Belgrade",
+        "zipCode": 11000,
+        "wage": {
+          "startDate": "12.2.2019",
+          "endDate": "12.2.2019",
+          "amount": 50
+        }
+      },
+      "startDate": "12.2.2019",
+      "endDate": "12.2.2019",
+      "bills": [{
+        "billItems": [{
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }]
+      }],
+      "status": "upcoming"
+    }]
+  },{
+    "id": "6",
+    "firstName": "Jovan",
+    "lastName": "Milosevic",
+    "email": "mashan@gmail.com",
+    "username": "mmisojcic",
+    "role": "admin",
+    "businessTrips": [{
+      "id": 1,
+      "destination": {
+        "city": "Belgrade",
+        "zipCode": 11000,
+        "wage": {
+          "startDate": "12.2.2019",
+          "endDate": "12.2.2019",
+          "amount": 50
+        }
+      },
+      "startDate": "12.2.2019",
+      "endDate": "12.2.2019",
+      "bills": [{
+        "billItems": [{
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }]
+      }],
+      "status": "upcoming"
+    }]
+  },{
+    "id": "7",
+    "firstName": "Nenad",
+    "lastName": "Jovanovic",
+    "email": "mashan@gmail.com",
+    "username": "mmisojcic",
+    "role": "admin",
+    "businessTrips": [{
+      "id": 1,
+      "destination": {
+        "city": "Belgrade",
+        "zipCode": 11000,
+        "wage": {
+          "startDate": "12.2.2019",
+          "endDate": "12.2.2019",
+          "amount": 50
+        }
+      },
+      "startDate": "12.2.2019",
+      "endDate": "12.2.2019",
+      "bills": [{
+        "billItems": [{
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }, {
+          "cost": 5,
+          "name": "hotel"
+        }]
+      }],
+      "status": "upcoming"
+    }]
+  }]
+  

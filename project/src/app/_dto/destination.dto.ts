@@ -4,6 +4,6 @@ export interface DestinationDTO {
   id?: number;
   city?: string;
   zipCode?: number;
-  wage?: WageInfoDTO;
+  currentWage?: number;
   wages?: WageInfoDTO[];
 }

@@ -6,7 +6,6 @@ export interface BusinessTripDTO {
   destination?: DestinationDTO;
   startDate?: string;
   endDate?: string;
-  billsTotal?: number;
   bills?: Bill[];
   status?: string;
 }

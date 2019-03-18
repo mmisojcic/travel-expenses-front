@@ -2,11 +2,14 @@
     overflow: hidden;
   }
   
-  .destinations {
+  .business-trip {
     max-height: calc(100vh - 180px);
     width: 80%;
   }
-  
+  .new-business-trip {
+    max-height: calc(100vh - 180px);
+    width: 40%;
+  }
   .table-destinations {
     position: relative;
     margin-bottom: 0;
@@ -116,3 +119,24 @@
       // width: 100%;
   }
   
+  .add {
+    position: absolute;
+    z-index: 4444;
+    top: calc(100% + .4rem);
+    left: .2rem;
+    transition: all .4s;
+    align-self: center;
+  }
+
+  .dates{
+    display: flex;
+    justify-content: space-around;
+
+    &_date{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+    }
+  }
