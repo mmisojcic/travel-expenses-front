@@ -4,7 +4,6 @@ import { Destination } from './../../_models/destination.model';
 import { BusinessTripDTO } from './../../_dto/business-trip.dto';
 import { BusinessTrip } from './../../_models/business-trip.model';
 import { HttpService } from './../../_services/http.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   employeeAnimation,
@@ -24,19 +23,25 @@ import { StatusDTO } from 'src/app/_dto/status.dto';
   selector: 'app-business-trips',
   templateUrl: './business-trips.component.html',
   styleUrls: ['./business-trips.component.scss'],
-  animations: [employeeAnimation, businessTripAnimation, newBusinessTripAnimation]
+  animations: [
+    employeeAnimation,
+    businessTripAnimation,
+    newBusinessTripAnimation
+  ]
 })
 export class BusinessTripsComponent implements OnInit {
   newBusinessTripForm: FormGroup;
   currentBusinessTrip: BusinessTrip = new BusinessTrip();
+  currentBusinessTripNO = 0;
   businessTrips: BusinessTrip[] = [];
   employeesOnTrip: Employee[] = [];
   destinations: Destination[] = [];
   destination: Destination = new Destination();
   statuses: Status[] = [];
-  
+
   animationTrigger = 'closed';
   newTripAnimationTrigger = 'closed';
+
   constructor(private http: HttpService) {}
 
   ngOnInit() {
@@ -44,77 +49,95 @@ export class BusinessTripsComponent implements OnInit {
     this.newBusinessTripForm = new FormGroup({
       destination: new FormControl(),
       startDate: new FormControl(null),
-      endDate: new FormControl(null)
+      endDate: new FormControl(null),
+      status: new FormControl()
     });
     // get business trips
-    this.http.getBusinessTrips(endPoint.baseUrl + endPoint.businessTrips).subscribe(
-      (res: BusinessTripDTO[]) => {
-        this.businessTrips = DataConverter.jsonToBusinessTrips(res);
-      }, err => {
-        console.log('error on business trips get ' + err.status);
-        this.businessTrips = DataConverter.jsonToBusinessTrips(Data.businessTrips);
-        console.log(this.businessTrips)
+    this.http
+      .getBusinessTrips(endPoint.baseUrl + endPoint.businessTrips)
+      .subscribe(
+        (res: BusinessTripDTO[]) => {
+          this.businessTrips = DataConverter.jsonToBusinessTrips(res);
+        },
+        err => {
+          console.log('error on business trips get ' + err.status);
+          this.businessTrips = DataConverter.jsonToBusinessTrips(
+            Data.businessTrips
+          );
+          console.log(this.businessTrips);
+        }
+      );
+    this.currentBusinessTrip = this.businessTrips[0];
+
+    // get statuses
+    this.http.getStatuses(endPoint.baseUrl + endPoint.statuses).subscribe(
+      (res: StatusDTO[]) => {
+        this.statuses = DataConverter.jsonToStatuses(res);
+      },
+      err => {
+        console.log('error on destination get ' + err.status);
+        this.statuses = DataConverter.jsonToStatuses(Data.statuses);
+        console.log(this.statuses);
       }
     );
-    this.currentBusinessTrip = this.businessTrips[0];
   }
 
   onBusinessTrip(index: number) {
     this.animationTrigger = 'open';
     this.currentBusinessTrip = this.businessTrips[index];
     // get all employees on business trip using current business trip id
-    this.http.getEmployeesOnTrip(endPoint.baseUrl + endPoint.employee + this.currentBusinessTrip.id).subscribe(
-      (res: EmployeeDTO[]) => {
-        this.employeesOnTrip = DataConverter.jsonToTripEmployees(res);
-      },
-      err => {
-        console.log('error on get employees on business trip ' + err.status);
-        this.employeesOnTrip = DataConverter.jsonToTripEmployees(Data.employeesOnTrip);
-      }
-    )
+    this.http
+      .getEmployeesOnTrip(
+        endPoint.baseUrl + endPoint.employee + this.currentBusinessTrip.id
+      )
+      .subscribe(
+        (res: EmployeeDTO[]) => {
+          this.employeesOnTrip = DataConverter.jsonToTripEmployees(res);
+        },
+        err => {
+          console.log('error on get employees on business trip ' + err.status);
+          this.employeesOnTrip = DataConverter.jsonToTripEmployees(
+            Data.employeesOnTrip
+          );
+        }
+      );
+    this.currentBusinessTripNO = index + 1;
     console.log(index);
   }
 
   onCloseBusinessTrip() {
-    if(this.animationTrigger === 'open'){
+    if (this.animationTrigger === 'open') {
       this.animationTrigger = 'closed';
     }
-    if(this.newTripAnimationTrigger === 'open'){
+    if (this.newTripAnimationTrigger === 'open') {
       this.newTripAnimationTrigger = 'closed';
       this.newBusinessTripForm.reset();
     }
   }
 
-  onNewBusinessTrip(){
+  onNewBusinessTrip() {
     // get all destinations
-    this.http.getDestinations(endPoint.baseUrl + endPoint.destinations).subscribe(
-      (res:DestinationDTO[]) => {
-        this.destinations = DataConverter.jsonToDestinations(res);
-      },
-      err => {
-        console.log('error on destination get ' + err.status);
-        this.destinations = DataConverter.jsonToDestinations(Data.destinations);
-      }
-    );
-    // get statuses
-    this.http.getStatuses(endPoint.baseUrl + endPoint.statuses).subscribe(
-        (res: StatusDTO[]) => {
-          this.statuses = DataConverter.jsonToStatuses(res);
+    this.http
+      .getDestinations(endPoint.baseUrl + endPoint.destinations)
+      .subscribe(
+        (res: DestinationDTO[]) => {
+          this.destinations = DataConverter.jsonToDestinations(res);
         },
         err => {
           console.log('error on destination get ' + err.status);
-          this.statuses = DataConverter.jsonToStatuses(Data.statuses);
-          console.log(this.statuses);
+          this.destinations = DataConverter.jsonToDestinations(
+            Data.destinations
+          );
         }
       );
 
-      // open dialog
+    // open dialog
     this.newTripAnimationTrigger = 'open';
-    console.log(this.newTripAnimationTrigger)
+    console.log(this.newTripAnimationTrigger);
   }
 
   // submit new business trip
-  save(){
+  save() {
     const index = this.newBusinessTripForm.get('destination').value;
     console.log(index);
     console.log(this.destinations[index]);
@@ -124,34 +147,40 @@ export class BusinessTripsComponent implements OnInit {
       this.formatDate(this.newBusinessTripForm.get('startDate').value),
       this.formatDate(this.newBusinessTripForm.get('endDate').value),
       null,
-      null
-    )
-
+      this.newBusinessTripForm.get('status').value
+    );
+    // console.log(this.newBusinessTripForm.get('status').value);
     // post to server
-    this.http.saveBusinessTrip(endPoint.baseUrl + endPoint.businessTrip, DataConverter.businessTripToJson(businessTrip)).subscribe(
-      res => {
-       if(res.ok){
-         console.log('ok on business trip save');
-       }
-      },
-      err => {
-        this.businessTrips.push(businessTrip);
-        console.log('error on business trip save ' + err.status);
-      }
-    )
+    this.http
+      .saveBusinessTrip(
+        endPoint.baseUrl + endPoint.businessTrip,
+        DataConverter.businessTripToJson(businessTrip)
+      )
+      .subscribe(
+        res => {
+          if (res.ok) {
+            console.log('ok on business trip save');
+          }
+        },
+        err => {
+          this.businessTrips.push(businessTrip);
+          console.log('error on business trip save ' + err.status);
+        }
+      );
     this.newBusinessTripForm.reset();
     this.newTripAnimationTrigger = 'closed';
-    console.log(this.businessTrips[this.businessTrips.length - 1].destination.currentWage);
+    console.log(
+      this.businessTrips[this.businessTrips.length - 1].destination.currentWage
+    );
   }
 
-
   // select destination from option manu and wages
-  onDestinationSelect(index: number){
+  onDestinationSelect(index: number) {
     console.log(index);
     this.destination = this.destinations[2];
   }
   // set status color by status type
-  statusColor(status?: string, select?: HTMLOptionElement) {
+  statusColor(status?: number, select?: HTMLOptionElement) {
     // in case of option select
     if (select) {
       select.style.color = this.colorPick(status);
@@ -163,13 +192,13 @@ export class BusinessTripsComponent implements OnInit {
 
   colorPick(status) {
     let color;
-    if (status === 'ongoing') {
+    if (status === 1) {
       color = '#007bff';
-    } else if (status === 'upcoming') {
+    } else if (status === 2) {
       color = '#ffc107';
-    } else if (status === 'finished') {
+    } else if (status === 3) {
       color = '#28a745';
-    } else if (status === 'canceled') {
+    } else if (status === 4) {
       color = '#dc3545';
     }
     return color;

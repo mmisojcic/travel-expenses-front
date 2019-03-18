@@ -1,3 +1,4 @@
+import { endPoint } from 'src/app/_config/end-points.config';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TripStatus } from './../../_models/tripStatus.model';
 import { BillItem } from './../../_models/bill-item.model';
@@ -13,6 +14,10 @@ import { Employee } from 'src/app/_models/employee.model';
 import { HttpService } from 'src/app/_services/http.service';
 import { Router } from '@angular/router';
 import { Bill } from 'src/app/_models/bill.model';
+import { Status } from 'src/app/_models/status.model';
+import { StatusDTO } from 'src/app/_dto/status.dto';
+import { DataConverter } from 'src/app/_converters/data.converter';
+import { Data } from 'src/app/_tests/data.provider';
 
 @Component({
   selector: 'app-employee',
@@ -23,20 +28,11 @@ import { Bill } from 'src/app/_models/bill.model';
 export class EmployeeComponent implements OnInit {
   statusForm: FormGroup;
 
+  statuses: Status[] = [];
   employee: Employee = new Employee();
   currentBusinessTrip: BusinessTrip = new BusinessTrip();
   currentBusinessTripTotalBill = 0;
   currentBusinessTripBillItemsTotal = [];
-
-  // mock status array. later to be filled with real data
-  tripStatuses = [
-    new TripStatus(1, 'ongoing'),
-    new TripStatus(2, 'upcoming'),
-    new TripStatus(3, 'finished'),
-    new TripStatus(4, 'canceled')
-  ];
-  // single status
-  // status = 'upcoming';
 
   // animation trigger
   businessTripTrigger = 'closed';
@@ -61,11 +57,23 @@ export class EmployeeComponent implements OnInit {
     this.statusForm = new FormGroup({
       status: new FormControl(Validators.required)
     });
+
+    // get statuses
+    this.http.getStatuses(endPoint.baseUrl + endPoint.statuses).subscribe(
+      (res: StatusDTO[]) => {
+        this.statuses = DataConverter.jsonToStatuses(res);
+      },
+      err => {
+        console.log('error on destination get ' + err.status);
+        this.statuses = DataConverter.jsonToStatuses(Data.statuses);
+        console.log(this.statuses);
+      }
+    );
   }
 
   changeStatus() {
     const i = this.statusForm.get('status').value;
-    const status = new TripStatus(i, this.tripStatuses[i - 1].name);
+    const status = new TripStatus(i, this.statuses[i - 1].name);
 
     console.log(status);
   }
@@ -80,7 +88,7 @@ export class EmployeeComponent implements OnInit {
     this.businessTripTrigger = 'closed';
   }
 
-  statusColor(status?: string, select?: HTMLOptionElement) {
+  statusColor(status?: number, select?: HTMLOptionElement) {
     // in case of option select
     if (select) {
       select.style.color = this.colorPick(status);

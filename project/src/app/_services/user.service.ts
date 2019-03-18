@@ -28,6 +28,7 @@ export class UserService {
     if (this.employeeService.employee.username !== undefined) {
       this.session = {
         uid: this.employeeService.employee.id,
+        role: this.employeeService.employee.role,
         start: new Date().toLocaleString()
       };
       this.userSetupData = new UserSetupData(

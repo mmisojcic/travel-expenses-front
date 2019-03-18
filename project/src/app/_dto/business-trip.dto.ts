@@ -7,5 +7,5 @@ export interface BusinessTripDTO {
   startDate?: string;
   endDate?: string;
   bills?: Bill[];
-  status?: string;
+  status?: number;
 }

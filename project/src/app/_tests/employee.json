@@ -1,10 +1,10 @@
 {
-  "id": "2",
+  "id": "33",
   "firstName": "Marko",
   "lastName": "Misojcic",
   "email": "mashan@gmail.com",
   "username": "mmisojcic",
-  "role": "admin",
+  "role": "user",
   "businessTrips": [{
     "id": 1,
     "destination": {

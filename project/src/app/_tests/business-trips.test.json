@@ -195,8 +195,9 @@
         "name": "hotel"
       }]
     }],
-    "status": "upcoming"
-  }, {
+    "status": 2
+  },
+  {
     "id": 2,
     "destination": {
       "city": "Belgrade",
@@ -393,7 +394,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "ongoing"
+    "status": 2
   }, {
     "id": 3,
     "destination": {
@@ -591,7 +592,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "canceled"
+    "status": 3
   }, {
     "id": 4,
     "destination": {
@@ -789,7 +790,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "finished"
+    "status": 4
   }, {
     "id": 5,
     "destination": {
@@ -987,7 +988,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "canceled"
+    "status": 2
   }, {
     "id": 1,
     "destination": {
@@ -1185,9 +1186,8 @@
         "name": "hotel"
       }]
     }],
-    "status": "upcoming"
-  },
-  {
+    "status": 3
+  }, {
     "id": 1,
     "destination": {
       "city": "Belgrade",
@@ -1384,7 +1384,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "upcoming"
+    "status": 1
   }, {
     "id": 2,
     "destination": {
@@ -1582,7 +1582,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "ongoing"
+    "status": 2
   }, {
     "id": 3,
     "destination": {
@@ -1780,7 +1780,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "canceled"
+    "status": 4
   }, {
     "id": 4,
     "destination": {
@@ -1978,7 +1978,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "finished"
+    "status": 1
   }, {
     "id": 5,
     "destination": {
@@ -2176,7 +2176,7 @@
         "name": "hotel"
       }]
     }],
-    "status": "canceled"
+    "status": 2
   }, {
     "id": 1,
     "destination": {
@@ -2374,5 +2374,6 @@
         "name": "hotel"
       }]
     }],
-    "status": "upcoming"
-  }]
+    "status": 1
+  }
+]

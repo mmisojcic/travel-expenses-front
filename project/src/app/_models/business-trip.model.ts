@@ -9,6 +9,6 @@ export class BusinessTrip {
     public startDate?: string,
     public endDate?: string,
     public bills?: Bill[],
-    public status?: string
+    public status?: number
   ) {}
 }

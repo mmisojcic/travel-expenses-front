@@ -67,14 +67,15 @@
       <p class="lead">Destination:</p>
       <div class="pl-3 flex ">
         <p class="lead">City: {{currentBusinessTrip.destination.city}}</p>
-        <p class="lead ml-2">Wage: {{currentBusinessTrip.destination.wage.amount}}</p>
+        <p class="lead ml-2">Wage: {{currentBusinessTrip.destination.currentWage}}</p>
       </div>
       <p class="lead">Start date: {{currentBusinessTrip.startDate}}</p>
       <p class="lead">End date: {{currentBusinessTrip.endDate}}</p>
     </div>
     <div class="col-sm-6">
       <p class="lead">Total spent: {{currentBusinessTripTotalBill}}$</p>
-      <p class="lead" *ngIf="true">Status: <span class="uppercase" [ngStyle]="{'color': color}">{{currentBusinessTrip.status}}</span></p>
+      <p class="lead" *ngIf="true">Status: <span class="uppercase" [ngStyle]="{'color': color}">{{statuses[currentBusinessTrip.status
+          - 1]}}</span></p>
       <!-- <form [formGroup]="statusForm" (ngSubmit)="changeStatus()" class="form-inline" *ngIf="true">
         <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
         <select #select (change)="statusColor(currentBusinessTrip.status, select)" [ngStyle]="{'color': statusColor(currentBusinessTrip.status)}"

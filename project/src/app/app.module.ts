@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './_components/page-not-found/page-not-fou
 import { Employee } from './_models/employee.model';
 import { BusinessTripsComponent } from './_components/business-trips/business-trips.component';
 import { CredentialsComponent } from './_components/credentials/credentials.component';
+import { AdminNoteComponent } from './_components/admin-note/admin-note.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CredentialsComponent } from './_components/credentials/credentials.comp
     DestinationsComponent,
     PageNotFoundComponent,
     BusinessTripsComponent,
-    CredentialsComponent
+    CredentialsComponent,
+    AdminNoteComponent
   ],
   imports: [
     BrowserModule,

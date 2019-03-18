@@ -13,7 +13,6 @@
           <th scope="col">End Date</th>
           <th scope="col">Status</th>
           <th scope="col">Wage</th>
-          <!-- <th scope="col">Number of Employees</th> -->
       </thead>
     <tbody class="table-body shadow-sm">
       <tr *ngFor="let businessTrip of businessTrips;let i = index" (click)="onBusinessTrip(i)">
@@ -21,12 +20,13 @@
         <td>{{businessTrip.destination.city}}</td>
         <td>{{businessTrip.startDate}}</td>
         <td>{{businessTrip.endDate}}</td>
-        <td class="uppercase" [ngStyle]="{'color': statusColor(businessTrip.status)}">{{businessTrip.status}}</td>
+        <td class="uppercase" [ngStyle]="{'color': statusColor(businessTrip.status)}">
+          {{statuses[businessTrip.status - 1].name}}</td>
         <td>{{businessTrip.destination.currentWage}}</td>
-        <!-- <td>12</td> -->
       </tr>
     </tbody>
-    <button type="button" class="btn btn-primary add" (click)="onNewBusinessTrip()" [disabled]="newTripAnimationTrigger === 'open'">Add new</button>
+    <button type="button" class="btn btn-primary add" (click)="onNewBusinessTrip()" [disabled]="newTripAnimationTrigger === 'open'">Add
+      new</button>
   </table>
 </div>
 
@@ -35,7 +35,7 @@
   <button type="button" class="close" aria-label="Close" (click)="onCloseBusinessTrip()">
     <span aria-hidden="true">&#8600;</span>
   </button>
-  <h1 class="display-4">Business Trip #1</h1>
+  <h1 class="display-4">Business Trip #{{currentBusinessTripNO}}</h1>
   <h4>Business Trip Details</h4>
   <hr class="my-4">
   <div class="row ">
@@ -44,7 +44,8 @@
       <p class="lead">Start Date:&nbsp;{{currentBusinessTrip.startDate}}</p>
       <p class="lead">End Date:&nbsp;{{currentBusinessTrip.endDate}}</p>
       <p class="lead">Wage:&nbsp;{{currentBusinessTrip.destination.currentWage}}</p>
-      <p class="lead" >Status:&nbsp;<span class="uppercase"  [ngStyle]="{'color': statusColor(currentBusinessTrip.status)}">{{currentBusinessTrip.status}}</span></p>
+      <p class="lead">Status:&nbsp;<span class="uppercase" [ngStyle]="{'color': statusColor(currentBusinessTrip.status)}">
+          {{statuses[currentBusinessTrip.status - 1].name}}</span></p>
       <!-- <p class="lead">Number of Employees: 12</p> -->
       <!-- <form class="form-inline" *ngIf="true">
               <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">New wage:</label>
@@ -74,38 +75,45 @@
   </div>
 </div>
 
-  <!-- add new business trip -->
-  <div class="jumbotron border bg-light full-center  new-business-trip shadow-very-very-big" [@newBusinessTripAnimation]="newTripAnimationTrigger">
-    <button type="button" class="close" aria-label="Close" (click)="onCloseBusinessTrip()">
-      <span aria-hidden="true">&#8600;</span>
-    </button>
-    <h1 class="display-4">New business trip</h1>
-    <h4>Add business trip details to save</h4>
-    <hr class="my-4">
+<!-- add new business trip -->
+<div class="jumbotron border bg-light full-center  new-business-trip shadow-very-very-big" [@newBusinessTripAnimation]="newTripAnimationTrigger">
+  <button type="button" class="close" aria-label="Close" (click)="onCloseBusinessTrip()">
+    <span aria-hidden="true">&#8600;</span>
+  </button>
+  <h1 class="display-4">New business trip</h1>
+  <h4>Add business trip details to save</h4>
+  <hr class="my-4">
 
-    <form [formGroup]="newBusinessTripForm" (ngSubmit)="save()">
-      <div class="form-group">
-        <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Destination:</label>
-        <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref" formControlName="destination">
-          <option [value]="ind" *ngFor="let destination of destinations;let ind = index">
-            {{destination.city}}
-            <span class="lead" for="inlineFormCustomSelectPref">/ Wage:&nbsp;{{destination.currentWage}}</span>
-          </option>
-        </select>
-      </div>
-      <div class="form-group dates">
-        <div class="dates_date">
-            <label for="startDate">Start date</label>
-            <input type="date" class="form-control shadow-sm" placeholder="5.1.2019" formControlName="startDate">
-        </div>
-        <div class="dates_date">
-            <label for="startDate">Start date</label>
-            <input type="date" class="form-control shadow-sm" placeholder="5.1.2019" formControlName="endDate">
-        </div>
-      </div>
-      <hr class="my-4">
-      <button type="submit" class="btn btn-primary">Save</button>
-      <button button="submit" class="btn btn-primary ml-3" (click)="onCloseBusinessTrip()">Cancel</button>
-    </form>
-    
-  </div>
+  <form [formGroup]="newBusinessTripForm" (ngSubmit)="save()">
+    <div class="form-group form-inline">
+      <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Destination:</label>
+      <select class="custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref" formControlName="destination">
+        <option [value]="ind" *ngFor="let destination of destinations;let ind = index">
+          {{destination.city}}
+          <span class="lead" for="inlineFormCustomSelectPref">/ Wage:&nbsp;{{destination.currentWage}}</span>
+        </option>
+      </select>
+    </div>
+    <div class="form-group form-inline">
+      <label for="startDate" class="my-1 mr-2 lead">Start date:</label>
+      <input type="date" class="form-control shadow-sm" placeholder="5.1.2019" formControlName="startDate">
+    </div>
+    <div class="form-group form-inline">
+      <label for="endDate" class="my-1 mr-2 lead">End date:</label>
+      <input type="date" class="form-control shadow-sm" placeholder="5.1.2019" formControlName="endDate">
+    </div>
+    <div class="form-inline">
+      <label class="my-1 mr-2 lead" for="inlineFormCustomSelectPref">Status:</label>
+      <select class="uppercase custom-select my-1 mr-sm-2 shadow-sm" id="inlineFormCustomSelectPref" formControlName="status">
+        <option #option class="uppercase" [value]="statuses[ind].id" *ngFor="let status of statuses;let ind = index"
+          [ngStyle]="{'color': statusColor(status.id)}">
+          {{status.name}}
+        </option>
+      </select>
+    </div>
+    <hr class="my-4">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary ml-3" (click)="onCloseBusinessTrip()">Cancel</button>
+  </form>
+
+</div>
